@@ -1,0 +1,49 @@
+html, * {
+  box-sizing: border-box;
+}
+  
+html, body {
+  height: 100%;
+}
+
+h1 {
+    color: yellow;
+    font-family: 'Neucha', cursive;
+ }
+.scoreboard-wrapper {
+  display: grid;
+  justify-items: flex-start;
+  align-items: center;
+}
+
+.monster {
+  display: grid;
+  justify-content: stretch;
+  align-items: stretch;
+ }
+  
+button {
+   display: inline-flexbox;
+   background-color: darkgreen;
+   color: peachpuff;
+   border: 2px solid white;
+   border-radius: 3;
+}
+  
+ button:hover {
+   background-color: lightblue;
+   color: white;
+ }
+
+.hover-message-1 {
+  display: none;
+}
+
+.demo-button:hover + .hover-message-1 {
+    display: block;
+    text-align: center;
+    font-size: large;
+    color: white;
+}
+  
+ 
