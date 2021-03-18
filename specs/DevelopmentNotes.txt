@@ -1,0 +1,35 @@
+// Declaring an array of characters, Option #1 
+// Declare an empty char array to hold 5 elements 
+// char[] jcdCharArray = new char[5]; 
+// Initialize char array with values 
+// jcdCharArray[0] = 'a'; 
+// jcdCharArray[1] = 'b'; 
+// jcdCharArray[2] = 'c'; 
+// jcdCharArray[3] = 'd'; 
+// jcdCharArray[4] = 'e'; 
+// Option #2 
+// Declare and initialize a char array 
+// char[] jcdCharArray2 = {'a','b','c','d','e'}; 
+
+// DATABASE_URL=mongodb+srv://sei:<::$DATA, etc.>@sei.pf3p2.mongodb.net/myFirstDatabase?retryWrites=true&w=majority
+// I.e. DATABASE_URL=mongodb+srv://sei:**********@sei.pf3p2.mongodb.net/puppies?retryWrites=true&w=majority
+
+// Here's the latest options to include to get rid of the deprecation warnings:
+// mongoose.connect(process.env.DATABASE_URL, {
+//  useNewUrlParser: true,
+//  useUnifiedTopology: true,
+//  useCreateIndex: true
+//  });
+
+// Ternary Operator Example:
+// var age = 58;
+// var beverage = (age >= 21) ? "Beer" : "Juice";
+// console.log(beverage); // "Beer"
+
+// Spread Operator Example:
+// let numberStore = [0, 1, 2];
+// let newNumber = 12;
+// numberStore = [...numberStore, newNumber]; //appends 12 to the array
+
+
+
