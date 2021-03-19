@@ -1,7 +1,6 @@
 /*----- constants -----*/
-const gameTitle; 
-
-var gameTitleMessage = “Welcome to the Monster Portal!”;
+const gameTitle = new String("Monster Portal");
+const howToPlayURL = new String("html/howtoplay.html");
 
 /*------ sound declarations -----*/
 const audioCheer = new Audio('sounds/cheer.mp3');
@@ -16,9 +15,9 @@ const audioMonsterRoar = Audio('sounds/mp-roar.mp3')
 
 
 /*----- app's state (variables) -----*/
-var playTotallyOriginalThemeSong; 
+var playTotallyOriginalThemeSong = false; 
 var nextMonsterTile;
-var howToPlayURL = “html/howtoplay.html”; 
+var howToPlayURL; 
 var badGuessesRemaining;
 var correctGuessesMade;
 var totalGuessesMade;
@@ -27,13 +26,13 @@ var gameLosses;
 
 
 /*----- cached element references -----*/
-var tile1 = “imgs/mp1.jpg”;
-var tile2 = “imgs/mp2.jpg”;
-var tile3 = “imgs/mp3.jpg”;
-var tile4 = “imgs/mp4.jpg”;
-var tile5 = “imgs/mp5.jpg”;
-var tile6 = “imgs/mp6.jpg”;
-var tile7 = “imgs/mp7.jpg”;  
+var tile1 = "imgs/mp1.jpg";
+var tile2 = "imgs/mp2.jpg";
+var tile3 = "imgs/mp3.jpg";
+var tile4 = "imgs/mp4.jpg";
+var tile5 = "imgs/mp5.jpg";
+var tile6 = "imgs/mp6.jpg";
+var tile7 = "imgs/mp7.jpg";  
 
 
 /*----- event listeners -----*/
@@ -59,9 +58,7 @@ function renderGame() {
 
 function initGame() {
   nextMonsterTile = tile1;
-  gameTitle = “Monster Portal™”; 
   playTotallyOriginalThemeSong = false;
-  howToPlayURL = “html/howtoplay.html”; 
   badGuessesRemaining = 7;
   correctGuessesMade = 0;
   totalGuessesMade = 0;

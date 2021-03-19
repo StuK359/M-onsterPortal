@@ -14,8 +14,13 @@ h1 {
  }
 .scoreboard-wrapper {
   display: grid;
-  justify-items: flex-start;
+  grid-template-columns: 2;
+  grid-template-rows: center;
+  width: 200px;
+  justify-items: center;
   align-items: center;
+  font-size: larger;
+  border-style: solid;
   border: 2px;
   border-radius: 5%;
 }
