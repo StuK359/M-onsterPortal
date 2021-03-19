@@ -38,7 +38,9 @@ var tile7 = “imgs/mp7.jpg”;
 
 /*----- event listeners -----*/
 // document.getElementById('demo-button').addEventListener('click', renderGame;
-
+// everykeytop object needs an event handler that determines whether a click was 
+// a correct guess or an incorrect guess. Something like evaluateGuess();
+// 
 
 
 /*----- functions -----*/
@@ -69,6 +71,10 @@ function initGame() {
 
 function renderGame() {
   console.log("\nGame Rendered.");
+};
+
+function evaluateGuess(guess) {
+// Something like 'isCorrect(guess)?doCorrectGuessStuff(); : doWrongGuessStuff();
 };
 
 function guessCorrect() {
