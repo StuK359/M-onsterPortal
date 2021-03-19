@@ -19,8 +19,8 @@ var playTotallyOriginalThemeSong = false;
 var nextMonsterTile;
 var howToPlayURL; 
 var badGuessesRemaining;
-var correctGuessesMade;
-var totalGuessesMade;
+var correctGuesses;
+var totalGuesses;
 var gameWins;
 var gameLosses;
 
@@ -41,8 +41,13 @@ var tile7 = "imgs/mp7.jpg";
 // a correct guess or an incorrect guess. Something like evaluateGuess();
 // 
 
+document.getElementById("incorrect-guesses").innerHTML = "test";
+document.getElementById("correct-guesses").innerHTML = toString(correctGuesses);
+document.getElementById("game-wins").innerHTML = toString(gameWins);
+document.getElementById("game-losses").innerHTML = toString(gameLosses);
 
 /*----- functions -----*/
+
 
 
 

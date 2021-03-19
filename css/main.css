@@ -16,10 +16,28 @@ h1 {
   display: grid;
   grid-template-columns: 2;
   grid-template-rows: center;
-  width: 200px;
+  width: 220px;
   justify-items: center;
   align-items: center;
-  font-size: larger;
+  font-family: 'Neucha';
+  font-size: x-large;
+  border-style: solid;
+  border: 2px;
+  border-radius: 5%;
+  background-color: grey;
+}
+
+.menu {
+  display: grid;
+  grid-template-columns: ;
+  grid-template-rows: center;
+  width: 220px;
+  height: 60px;
+  justify-items: center;
+  align-items: center;
+  font-size: xx-large;
+  font-family: 'Neucha';
+  font-weight: 300;
   border-style: solid;
   border: 2px;
   border-radius: 5%;
@@ -33,15 +51,15 @@ h1 {
   
 button {
    display: inline-flexbox;
-   background-color: darkgreen;
-   color: peachpuff;
+   background-color: grey;
+   color: darkblue;
    border: 2px solid white;
    border-radius: 3;
 }
   
  button:hover {
-   background-color: lightblue;
-   color: white;
+   color:whitesmoke;
+   font-weight: bold;
  }
 
 .hover-message-1 {
