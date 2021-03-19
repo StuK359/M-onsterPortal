@@ -1,8 +1,6 @@
 /*----- constants -----*/
+const gameTitle; 
 
-
-const gameTitle = “MonsterPortal™”; 
-var playTotallyOriginalThemeSong = false; 
 var gameTitleMessage = “Welcome to the Monster Portal!”;
 
 /*------ sound declarations -----*/
@@ -18,17 +16,24 @@ const audioMonsterRoar = Audio('sounds/mp-roar.mp3')
 
 
 /*----- app's state (variables) -----*/
-var guessRemaining;
+var playTotallyOriginalThemeSong; 
 var nextMonsterTile;
 var howToPlayURL = “html/howtoplay.html”; 
-var badGuesses;
-var correctGuesses;
+var badGuessesRemaining;
+var correctGuessesMade;
 var totalGuessesMade;
 var gameWins;
+var gameLosses;
 
 
 /*----- cached element references -----*/
-
+var tile1 = “imgs/mp1.jpg”;
+var tile2 = “imgs/mp2.jpg”;
+var tile3 = “imgs/mp3.jpg”;
+var tile4 = “imgs/mp4.jpg”;
+var tile5 = “imgs/mp5.jpg”;
+var tile6 = “imgs/mp6.jpg”;
+var tile7 = “imgs/mp7.jpg”;  
 
 
 /*----- event listeners -----*/
@@ -37,6 +42,8 @@ var gameWins;
 
 
 /*----- functions -----*/
+
+
 
 function renderGame() {
 
@@ -47,42 +54,60 @@ function renderGame() {
   
 
 /*----- Game Functions -----*/
-function initializeGame() {
-   console.log("\nGame Initialized.");
-};
+
+function initGame() {
+  nextMonsterTile = tile1;
+  gameTitle = “Monster Portal™”; 
+  playTotallyOriginalThemeSong = false;
+  howToPlayURL = “html/howtoplay.html”; 
+  badGuessesRemaining = 7;
+  correctGuessesMade = 0;
+  totalGuessesMade = 0;
+  gameWins = 0;
+  gameLosses = 0;
+}
 
 function renderGame() {
   console.log("\nGame Rendered.");
 };
 
-
-/*----- Classes -----*/
-class letter {
-
+function guessCorrect() {
+// Turn keytop red.
+// decrement badGuessesRemaining--
+// set nextTileVisible(nextTile, true);
+// NextTile++.
+// updateScoreboard();
+// renderGame();  
 };
 
-class word {
+function guessWrong() {
+  // Turn keytop red.
+// decrement badGuessesRemaining--
+// set nextTileVisible(nextTile, true);
+// NextTile++.
+// updateScoreboard();
+// renderGame(); 
+};
 
+
+/*----- Classes -----*/
+class keytopObject {
+  constructor(letter, correct) {
+    this.letterName = letter;
+    this.letterCorrect = correct;
+  } 
 };
 
 class secretPasswords {
-
-};
-
-class keytopObject {
-
 };
 
 class keyboardObjectArray {
-
 };
 
-class activeSecretPassword {
-
+class currentSecretPassword {
 };
 
 class demoScript {
-
 };
 
 /*----- Start of Game -----*/

@@ -1,3 +1,7 @@
+// These are notes that I'm putting here for quick and easy reference. 
+// I'll remove this document prior to final submission.
+
+// Misc. Notes:
 // Declaring an array of characters, Option #1 
 // Declare an empty char array to hold 5 elements 
 // char[] jcdCharArray = new char[5]; 
