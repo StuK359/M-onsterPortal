@@ -1,3 +1,10 @@
+ @font-face {
+  font-family: "DSEG14Modern";
+  src: url("fonts/DSEG14Modern-Regular.woff2") format("woff2"),
+       url("fonts/DSEG14Modern-Regular.woff") format("woff"),
+       url("fonts/DSEG14Modern-Regular.ttf") format("ttf")
+} 
+
 html, * {
   box-sizing: border-box;
 }
@@ -12,6 +19,7 @@ h1 {
     color: yellow;
     font-family: 'Neucha', cursive;
  }
+
 .scoreboard-wrapper {
   display: grid;
   grid-template-columns: 2;
@@ -29,7 +37,7 @@ h1 {
 
 .menu {
   display: grid;
-  grid-template-columns: ;
+  grid-template-columns: 1;
   grid-template-rows: center;
   width: 220px;
   height: 60px;
@@ -62,15 +70,34 @@ button {
    font-weight: bold;
  }
 
-.hover-message-1 {
-  display: none;
-}
 
-.demo-button:hover + .hover-message-1 {
+ .keyboard {
+   display: grid;
+   grid-template-columns: 13;
+   grid-template-rows: 2;
+   padding: 2px;
+   border-style: solid;
+   border-radius: 4%;
+ }
+
+.keytop {
+   border-radius: 30%;
+   border-color: gold;
+   font-family: DSEG14Modern; 
+   font-size: xx-large;
+   width: 2em;
+   height: 2em;
+   text-align: center;
+}
+/* .hover-message-1 {
+  display: none;
+} */
+
+/* .demo-button:hover + .hover-message-1 {
     display: block;
     text-align: center;
     font-size: large;
     color: white;
-}
+} */
   
  
