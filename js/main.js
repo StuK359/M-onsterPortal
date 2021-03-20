@@ -41,7 +41,7 @@ var tile7 = "imgs/mp7.jpg";
 // a correct guess or an incorrect guess. Something like evaluateGuess();
 // 
 
-document.getElementById("incorrect-guesses").innerHTML = "test";
+document.getElementById("incorrect-guesses").innerText = "7";
 document.getElementById("correct-guesses").innerHTML = toString(correctGuesses);
 document.getElementById("game-wins").innerHTML = toString(gameWins);
 document.getElementById("game-losses").innerHTML = toString(gameLosses);
@@ -69,6 +69,7 @@ function initGame() {
   totalGuessesMade = 0;
   gameWins = 0;
   gameLosses = 0;
+  renderGame();
 }
 
 function renderGame() {
@@ -119,7 +120,7 @@ class demoScript {
 };
 
 /*----- Start of Game -----*/
-
+initGame();
 
 
 

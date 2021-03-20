@@ -1,10 +1,3 @@
- @font-face {
-  font-family: "DSEG14Modern";
-  src: url("fonts/DSEG14Modern-Regular.woff2") format("woff2"),
-       url("fonts/DSEG14Modern-Regular.woff") format("woff"),
-       url("fonts/DSEG14Modern-Regular.ttf") format("ttf")
-} 
-
 html, * {
   box-sizing: border-box;
 }
@@ -22,17 +15,18 @@ h1 {
 
 .scoreboard-wrapper {
   display: grid;
-  grid-template-columns: 2;
+  grid-template-columns: 5fr 1fr;
   grid-template-rows: center;
-  width: 220px;
-  justify-items: center;
+  width: 250px;
+  justify-items:flex-end;
   align-items: center;
   font-family: 'Neucha';
   font-size: x-large;
   border-style: solid;
-  border: 2px;
+  border: 8px;
   border-radius: 5%;
   background-color: grey;
+  padding: 1px 3px 1px 3px;
 }
 
 .menu {
@@ -56,7 +50,14 @@ h1 {
   justify-content: stretch;
   align-items: stretch;
  }
-  
+ 
+.secret-letter {
+    display: flex;
+} 
+.secret-letter-underline {
+    display: flex;
+}
+
 button {
    display: inline-flexbox;
    background-color: grey;
@@ -71,18 +72,23 @@ button {
  }
 
 
- .keyboard {
-   display: grid;
+ .keyboard > button{
+   display: flex;
    grid-template-columns: 13;
    grid-template-rows: 2;
+   justify-items: center;
+   align-items: center;
    padding: 2px;
    border-style: solid;
    border-radius: 4%;
  }
 
 .keytop {
+/*   display: flex; */
    border-radius: 30%;
    border-color: gold;
+   justify-items: auto;
+   align-items: auto;
    font-family: DSEG14Modern; 
    font-size: xx-large;
    width: 2em;
@@ -93,11 +99,25 @@ button {
   display: none;
 } */
 
-/* .demo-button:hover + .hover-message-1 {
-    display: block;
+.hidden {
+  display: inline-block;
+  color :  rgb(7, 17, 17);
+  border-color:  rgb(7, 17, 17);
+  background-color:  rgb(7, 17, 17);
+}
+
+#demo-button:hover + #demo-button + #demo-button-hidden-msg {
+    display: inline-block;
     text-align: center;
     font-size: large;
     color: white;
-} */
-  
- 
+    border-color: white;
+}
+
+#demo-button > hover-message-1{
+  display: inline-block;
+  width: 50%;
+  height: 100%;
+  background-color: red;
+}
+
