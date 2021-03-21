@@ -12,28 +12,42 @@
   <script defer src="js/main.js"></script>
  </head>
  <body>
-     <hl></hl>
+     <menu>
+      <button class="menu style="border: solid"" id="how-to-play-button">How To Play</button>
+      <button class="menu" style="border: solid" id="start-game-button">Start Game</button>
+      <button class="menu" style="border: solid" id="reset-game-button">Reset Game</button>
+      <button class="menu" style="border: solid" id="demo-button">Demo</button>
+     </menu>
      <h1>This is where the Game Messages will display.........</h1>
-     <hl></hl>
-     <div class="scoreboard-wrapper" style="border: solid">
+     <div class="scoreboard-wrapper">
         <div class="scoreboard" id="incorrect-guesses">Incorrect Guesses:</div><div>0</div>
         <div class="scoreboard" id="correct-guesses">   Correct Guesses:</div><div>0</div>
         <div class="scoreboard" id="game-wins">               Game Wins:</div><div>0</div>
         <div class="scoreboard" id="game-losses">           Game Losses:</div><div>0</div>
      </div>
-     <br>
-     <div class="menu" style="border: solid">
-        <button class="menu style="border: solid"" id="how-to-play-button">How To Play</button>
-        <button class="menu" style="border: solid" id="start-game-button">Start Game</button>
-        <button class="menu" style="border: solid" id="reset-game-button">Reset Game</button>
-        <button class="menu" style="border: solid" id="demo-button">Demo</button>
-     </div>
-     <br><br><br><br><br><br><br><br><br><br>
-     <!-- <div class="secret-letter"> </div><div class="secret-letter" > </div><div class="secret-letter"> </div><div class="secret-letter"> </div><div class="secret-letter"> </div><div class="secret-letter"> </div><div class="secret-letter"> </div><div class="secret-letter"> </div><div class="secret-letter"> </div> -->
-     <!-- <div class="secret-letter-underline">_</div><div class="secret-letter-underline">_</div><div class="secret-letter-underline">_</div><div class="secret-letter-underline">_</div><div class="secret-letter-underline">_</div><div class="secret-letter-underline"><div class="secret-letter-underline">_</div><div class="secret-letter-underline">_</div><div class="secret-letter-underline">_</div> -->
-     <hr>
-     <br>
-  <div class="Keyboard">
+    <portal>
+      <br>
+      <img id="monster-tile-5" src="imgs/mp5.jpg"/>
+      <img id="monster-tile-7" src="imgs/mp7.jpg"/>
+      <img id="monster-tile-6" src="imgs/mp6.jpg"/>
+      <img id="monster-tile-4" src="imgs/mp4.jpg"/>
+      <img id="monster-tile-3" src="imgs/mp3.jpg"/>
+      <img id="monster-tile-2" src="imgs/mp2.jpg"/>
+      <img id="monster-tile-1" src="imgs/mp1.jpg"/>
+    </portal>
+    <hr>
+    <secret-password>
+      <div></div><div></div><div></div><div></div><div></div><div></div>
+      <div>M</div><div>I</div><div>S</div><div>S</div><div>I</div><div>S</div><div>S</div><div>I</div><div>P</div><div>P</div><div>I</div>
+      <div></div><div></div><div></div><div></div><div></div><div></div>
+    </secret-password>
+    <underlines>
+      <div></div><div></div><div></div><div></div><div></div><div></div>
+      <div>_</div><div>_</div><div>_</div><div>_</div><div>_</div><div>_</div><div>_</div><div>_</div><div>_</div><div>_</div><div>_</div>
+      <div></div><div></div><div></div><div></div><div></div><div></div>
+    </underlines>
+    <br>
+    <div class="Keyboard">
     <button id="a" class="keytop">A</button>
     <button id="a" class="keytop">B</button>
     <button id="a" class="keytop">C</button>

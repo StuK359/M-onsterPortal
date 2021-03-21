@@ -4,6 +4,7 @@ html, * {
   
 html, body {
   height: 100%;
+  width: 100%;
   background-color: rgb(7, 17, 17);
   color: yellow;
 }
@@ -12,6 +13,69 @@ h1 {
     color: yellow;
     font-family: 'Neucha', cursive;
  }
+ menu {
+  /* display: flex;
+  flex-direction: row;  /* default. */
+  /* justify-content: space-around; */
+  /* justify-content: flex-start;
+  align-items: center;
+  height: 50px;
+  background-color: #a2cbb6; */
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  font-family: 'Neucha';
+  height: 50px;
+  border-style: solid;
+  justify-items: center;
+  font-size: xx-large;
+  color: yellow;
+  /* font-weight: 300;
+  border-style: solid;
+  border: 2px;
+  border-radius: 5%; */
+
+}
+
+menu > div {
+  grid-template-rows:auto;
+  margin: 0 15px;
+  color: #f3dba8 /* for transparent background, try rgba(45,67,80,.5); */
+  background-color: grey;
+}
+
+menu > div:last-child {
+  margin-left: auto;
+}
+.scoreboard-wrapper {
+  display: grid;
+  grid-template-columns: 5fr 1fr;
+  grid-template-rows: center;
+  width: 250px;
+  justify-items:flex-end;
+  align-items: center;
+  font-family: 'Neucha';
+  font-size: x-large;
+  border-style: solid;
+  border: 8px;
+  border-radius: 5%;
+  background-color: grey;
+  padding: 1px 3px 1px 3px;
+}
+
+
+/* menu {
+  display: flex;
+  grid-template-rows: auto;
+  justify-items: center;
+  align-items: center;
+  font-size: xx-large;
+  font-family: 'Neucha';
+  font-weight: 300;
+  border-style: solid;
+  border: 2px;
+  border-radius: 5%;
+} */
 
 .scoreboard-wrapper {
   display: grid;
@@ -29,27 +93,54 @@ h1 {
   padding: 1px 3px 1px 3px;
 }
 
-.menu {
-  display: grid;
-  grid-template-columns: 1;
-  grid-template-rows: center;
-  width: 220px;
-  height: 60px;
-  justify-items: center;
-  align-items: center;
-  font-size: xx-large;
-  font-family: 'Neucha';
-  font-weight: 300;
-  border-style: solid;
-  border: 2px;
-  border-radius: 5%;
+ /* This section is to deifne the monster portal grid structure */
+portal {
+    display: grid;
+    flex-wrap: nowrap;
+    justify-content:center;
+    align-items: auto;
+    background-color: rgba(200,250,280,0);
+    grid-template-columns: 6;
+    grid-template-rows: 6;
+    grid-template-areas:
+    "tile-5 tile-5 tile-7 tile-7 tile-6 tile-6"
+    "tile-4 tile-4 tile-4 tile-3 tile-3 tile-3"
+    "tile-2 tile-2 tile-2 tile-1 tile-1 tile-1"
 }
 
-.monster {
-  display: grid;
-  justify-content: stretch;
-  align-items: stretch;
- }
+portal > img {
+    width: auto;
+    height: auto;
+}
+
+#monster-tile-1 {
+    grid-area: tile-1;
+    justify-self:flex-start;
+    align-items:center ;
+}
+#monster-tile-2 {
+    grid-area: tile-2;
+    justify-self:flex-end;
+}
+#monster-tile-3 {
+    grid-area: tile-3;
+}
+#monster-tile-4 {
+    grid-area: tile-4;
+    justify-self:flex-end;
+}
+#monster-tile-5 {
+    grid-area: tile-5;
+    justify-self:flex-start;
+}
+#monster-tile-6 {
+    grid-area: tile-6;
+    justify-self:flex-end;
+}
+#monster-tile-7 {
+    grid-area: tile-7;
+    justify-self:flex-start;
+}
  
 .secret-letter {
     display: flex;
@@ -57,7 +148,32 @@ h1 {
 .secret-letter-underline {
     display: flex;
 }
+secret-password {
+  display: flex;
+  flex-direction: row;  /* default. */
+  /* justify-content: space-around; */
+  justify-content: center;
+  align-items: center;
+  font-size: xx-large;
+  height: auto;
+  background-color: #0c723e;
+}
 
+secret-password > div {
+  background-color:darkslategrey;
+  justify-content: center;
+  min-width: 2em;
+  padding-block: 10px;
+  font-size: x-large;
+}
+
+underlines {
+  display: flex;
+  grid-template-rows: 11;
+  background-color: greenyellow;
+  border-radius: 50%;
+  height: 1px;
+}
 button {
    display: inline-flexbox;
    background-color: grey;

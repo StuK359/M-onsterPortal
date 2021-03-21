@@ -2,6 +2,29 @@
 const gameTitle = new String("Monster Portal");
 const howToPlayURL = new String("html/howtoplay.html");
 
+const listSecretPasswords = [
+  "MISSISSIPPI",
+  "MARSUPIAL",
+  "MOUNTAIN",
+  "MONKEY",
+  "SPATULA",
+  "BICYCLE",
+  "LUNCH",
+  "PIZZA",
+  "Orangutan",
+  "Shovel",
+  "Canine",
+  "Table",
+  "Conflict",
+  "Parade",
+  "Wizard",
+  "Pandemic",
+  "Theater",
+  "Desert",
+  "Forest",
+  "Surfboard"
+  ]; 
+
 /*------ sound declarations -----*/
 const audioCheer = new Audio('sounds/cheer.mp3');
 const audioTaDa = new Audio('sounds/tada.mp3');
@@ -23,6 +46,7 @@ var correctGuesses;
 var totalGuesses;
 var gameWins;
 var gameLosses;
+var guess;
 
 
 /*----- cached element references -----*/
@@ -34,6 +58,7 @@ var tile5 = "imgs/mp5.jpg";
 var tile6 = "imgs/mp6.jpg";
 var tile7 = "imgs/mp7.jpg";  
 
+var nextMonsterTile = tile1;
 
 /*----- event listeners -----*/
 // document.getElementById('demo-button').addEventListener('click', renderGame;
@@ -69,33 +94,12 @@ function initGame() {
   totalGuessesMade = 0;
   gameWins = 0;
   gameLosses = 0;
+  guess = "";
   renderGame();
 }
 
 function renderGame() {
   console.log("\nGame Rendered.");
-};
-
-function evaluateGuess(guess) {
-// Something like 'isCorrect(guess)?doCorrectGuessStuff(); : doWrongGuessStuff();
-};
-
-function guessCorrect() {
-// Turn keytop red.
-// decrement badGuessesRemaining--
-// set nextTileVisible(nextTile, true);
-// NextTile++.
-// updateScoreboard();
-// renderGame();  
-};
-
-function guessWrong() {
-  // Turn keytop red.
-// decrement badGuessesRemaining--
-// set nextTileVisible(nextTile, true);
-// NextTile++.
-// updateScoreboard();
-// renderGame(); 
 };
 
 
@@ -107,8 +111,116 @@ class keytopObject {
   } 
 };
 
-class secretPasswords {
+
+
+/*----- Start of Game -----*/
+initGame();
+
+
+
+/* ToDo List (look into creating an app for this...): */
+/* Is guess good or bad? */
+function processGuess(guess) {
 };
+
+function guessWrong() {
+  // Turn keytop red.
+  // decrement badGuessesRemaining--
+  // set nextTileVisible(nextTile, true);
+  // NextTile++.
+  // updateScoreboard();
+  // renderGame();  
+  };
+/* Process Bad Guess */
+function processBadGuess(guess) {
+  setBadKeytopRed(guess);
+  RemainingGuesses--;
+  showNextTile(nextMonsterTile);
+  refreshScoreboard();
+
+  if (!RemainingGuesses) {
+    process(GameLost()); 
+    return; 
+  } else {
+    return;
+  }
+};
+
+/* Process Good Guess */
+function processGoodGuess(guess) {
+  setGoodKeytopGreen(guess);
+  refreshScoreboard();
+
+  if (!SPCharArray) {
+    return process(GameWon());
+  } else {
+    return;
+  } 
+};
+
+function showNextMonsterTile() {
+  showCurrentMonsterTile(nextMonsterTile);
+  updateNextMonsterTile(nextMonsterTile);
+};
+
+function showCurrentMonsterTile(nextMonsterTile) {
+  showTile(nextMonsterTile);
+};
+
+function showMonsterTile(nextMonsterTile) {
+   if(nextMonsterTile = tile1) {
+    // setTileVisible
+   } else if(nextMonsterTile= tile2) {
+    // setTileVisible
+  } else if(nextMonsterTile= tile3) {
+    // setTileVisible
+  } else if(nextMonsterTile= tile4) {    
+    // setTileVisible
+  } else if(nextMonsterTile= tile5) {
+    // setTileVisible
+  } else if(nextMonsterTile= tile6) {
+    // setTileVisible
+  } else if(nextMonsterTile= tile7) {
+       // setTileVisible
+  }
+};
+
+function refreshScoreboard() {
+  console.log("\nScoreboard Refreshed.")
+/* all relevant variables should already be changed, so just refresh screen. */
+};
+
+function guessedWrong() {
+    // Turn keytop red.
+  // decrement badGuessesRemaining--
+  // set nextTileVisible(nextTile, true);
+  // NextTile++.
+  // updateScoreboard();
+  // renderGame(); 
+  };
+  
+  
+
+
+/* Random Secret Password picker: */
+function chooseSecretPassword() {
+
+};
+/* Dynamically create SecretLetterPasswordMask array for each unique letter in the Secret Password. */
+/* This facilitates rapid assessment of Good Guesses. */
+/* MISSISSIPPI example hard-coded for testing & demo: */
+function createSecretPasswordLetterMask(SecretPassword) {
+  /* see example of hardcoded SecretPasswordLetterMask, below. */
+};
+
+var SecretPasswordLetterMask = ["M", "I", "S", "P"];
+
+function processEndGame(isWinOrLosss) {
+/* Is this still needed, since both Good and Bad guess processes determine endgame states? */
+/* Probably not.? */
+};
+
+
 
 class keyboardObjectArray {
 };
@@ -118,9 +230,5 @@ class currentSecretPassword {
 
 class demoScript {
 };
-
-/*----- Start of Game -----*/
-initGame();
-
 
 
