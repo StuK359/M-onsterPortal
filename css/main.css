@@ -14,34 +14,24 @@ h1 {
     font-family: 'Neucha', cursive;
  }
  menu {
-  /* display: flex;
-  flex-direction: row;  /* default. */
-  /* justify-content: space-around; */
-  /* justify-content: flex-start;
-  align-items: center;
-  height: 50px;
-  background-color: #a2cbb6; */
   display: flex;
   flex-direction: row;
   align-items: center;
   font-family: 'Neucha';
+  width: 250px;
+  align-items: center;
   height: 50px;
-  border-style: solid;
-  justify-items: center;
+  background-color: #a2cbb6;
+  justify-content: space-around;
   font-size: xx-large;
   color: yellow;
-  /* font-weight: 300;
-  border-style: solid;
-  border: 2px;
-  border-radius: 5%; */
-
+  background-color: rgb(128,128,128);
 }
 
 menu > div {
-  grid-template-rows:auto;
+  grid-template-rows: auto;
   margin: 0 15px;
-  color: #f3dba8 /* for transparent background, try rgba(45,67,80,.5); */
-  background-color: grey;
+  background-color: rgb(128,128,128);
 }
 
 menu > div:last-child {
@@ -165,6 +155,8 @@ secret-password > div {
   min-width: 2em;
   padding-block: 10px;
   font-size: x-large;
+  font-family: monospace;
+  background-color: rgb(30,113,65);
 }
 
 underlines {
