@@ -13,6 +13,27 @@ h1 {
     color: yellow;
     font-family: 'Neucha', cursive;
  }
+
+ nav {
+  display: flex;
+  flex-direction: row;  /* default. */
+  /* justify-content: space-around; */
+  justify-content: flex-start;
+  align-items: center;
+  height: 50px;
+  background-color: #a2cbb6;
+}
+
+nav > button {
+  font-size: 30px;
+  margin: 0 15px;
+  color: yellow;
+}
+
+nav > button:last-child {
+  margin-left: auto;
+}
+
  menu {
   display: flex;
   flex-direction: row;
@@ -52,20 +73,6 @@ menu > div:last-child {
   background-color: grey;
   padding: 1px 3px 1px 3px;
 }
-
-
-/* menu {
-  display: flex;
-  grid-template-rows: auto;
-  justify-items: center;
-  align-items: center;
-  font-size: xx-large;
-  font-family: 'Neucha';
-  font-weight: 300;
-  border-style: solid;
-  border: 2px;
-  border-radius: 5%;
-} */
 
 .scoreboard-wrapper {
   display: grid;
