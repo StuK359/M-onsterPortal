@@ -41,7 +41,7 @@ const audioSoSad = new Audio('sounds/toobad.mp3');
 /*----- app's state (variables) -----*/
 // var playTotallyOriginalThemeSong = false; /* Enable this if time permits */
 var nextMonsterTile;
-var badGuessesRemaining;  /* id="bad-guesses-remaining" */
+var badGuessesLeft;  /* id="bad-guesses-left" */
 var gamesWon;             /* id="game-wins" */
 var gamesLost;            /* id="game-losses" */
 var guess;                /* Current player's letter guess. */
@@ -128,6 +128,8 @@ document.getElementById('Z').addEventListener('click', isGuessCorrect);
   
 
 /*----- Game Functions -----*/
+gamesWon = 0;
+gamesLost = 0;
 
 function initGame() {
   
@@ -157,8 +159,6 @@ function initGame() {
 
 /* Initialize Scoreboard: */
 badGuessesLeft = 7;
-gamesWon = 0;
-gamesLost = 0;
 document.getElementById("bad-guesses-left").innerHTML = badGuessesLeft;
 document.getElementById("games-won").innerHTML = gamesWon;
 document.getElementById("games-lost").innerHTML = gamesLost;
@@ -191,12 +191,7 @@ function renderGame() {
 
 
 /*----- Classes -----*/
-class keytopObject {
-  constructor(letter, correct) {
-    this.letterName = letter;
-    this.letterCorrect = correct;
-  } 
-};
+
 
 
 
@@ -226,55 +221,65 @@ function guessWrong() {
   };
 /* Process Bad Guess */
 function processBadGuess(guess) {
-  setBadKeytopRed(guess);
-  RemainingGuesses--;
-  showNextTile(nextMonsterTile);
+  badGuessesLeft--;
+  document.getElementById('bad-guesses-left').innerHTML = badGuessesLeft.toString();
+  console.log("\nNumber of Bad Guesses Left is: ", badGuessesLeft);
+  showNextMonsterTile(nextMonsterTile);
+
   refreshScoreboard();
 
-  if (!RemainingGuesses) {
-    process(GameLost()); 
+  if (badGuessesLeft) {
     return; 
   } else {
+    gameIsLost();
     return;
   }
 };
 
 /* Process Good Guess */
 function processGoodGuess(guess) {
-  setGoodKeytopGreen(guess);
   refreshScoreboard();
 
-  if (!SPCharArray) {
+  if (!SecretPasswordLetterArray) {
     return process(GameWon());
   } else {
     return;
   } 
 };
 
-function showNextMonsterTile() {
-  showCurrentMonsterTile(nextMonsterTile);
-  updateNextMonsterTile(nextMonsterTile);
-};
-
-function showCurrentMonsterTile(nextMonsterTile) {
-  // showTile(nextMonsterTile);
+function showNextMonsterTile(nextMonsterTile) {
+  showMonsterTile(nextMonsterTile);
 };
 
 function showMonsterTile(nextMonsterTile) {
    if(nextMonsterTile = tile1) {
-    // setTileVisible
+    // setTile1Visible
+    mtImg1.style.display = "list-item";
+    nextMonsterTile = tile2;
    } else if(nextMonsterTile= tile2) {
     // setTileVisible
+    mtImg2.style.display = "list-item";
+    nextMonsterTile = tile3;
   } else if(nextMonsterTile= tile3) {
     // setTileVisible
+    mtImg3.style.display = "list-item";
+    nextMonsterTile = tile4;
   } else if(nextMonsterTile= tile4) {    
     // setTileVisible
+    mtImg4.style.display = "list-item";
+    nextMonsterTile = tile5;
   } else if(nextMonsterTile= tile5) {
     // setTileVisible
+    mtImg5.style.display = "list-item";
+    nextMonsterTile = tile6;
   } else if(nextMonsterTile= tile6) {
     // setTileVisible
+    mtImg6.style.display = "list-item";
+    nextMonsterTile = tile7;
   } else if(nextMonsterTile= tile7) {
        // setTileVisible
+    mtImg7.style.display = "list-item";
+    nextMonsterTile = tile1;   
   }
 };
 
@@ -283,61 +288,28 @@ function refreshScoreboard() {
 /* all relevant variables should already be changed, so just refresh screen. */
 };
 
+function gameIsLost() {
+   // Set msgGameBanner to, "You lost!"
+   // After a short pause, set msgGameBanner to "Play Again?"
+   gamesLost++;
+   document.getElementById('msg-game-banner').innerHTML = "You Lost! Play Again? Press 'Start Game'!";
+   
+};
 
 /* Random Secret Password picker: */
 function chooseSecretPassword() {
-    // var idxSecretPassword = Math.floor(Math.random() * 20) + 1;
-    // console.log("\nSecret Password Index is: ", idxSecretPassword); 
-    // SecretPassword = listSecretPasswords[idxSecretPassword];
+   var idxSecretPassword = Math.floor(Math.random() * 20) + 1;
+   console.log("\nSecret Password Index is: ", idxSecretPassword); 
+   SecretPassword = listSecretPasswords[idxSecretPassword];
     
     // For Testing Purposes Only
     SecretPassword = "MISSISSIPPI";
     console.log("Secret Password Is: ", SecretPassword);
     SecretPasswordLetterArray = SecretPassword.split('');
-    
-    SecretPasswordLetterMask = uniqueSecretLetters(SecretPassword);
-    console.log("Unique Secret Letters in ",SecretPassword," are" , SecretPasswordLetterMask);
-    // createSecretPasswordLetterMask(SecretPassword);
-    // createSecretPasswordLettersArray(SecretPassword);
-
-};
-
-/* Dynamically create SecretLetterPasswordMask array for each unique letter in the Secret Password. */
-/* This facilitates rapid assessment of Good Guesses. */
-/* MISSISSIPPI example hard-coded for testing & demo: */
-
-function uniqueSecretLetters(strSPwd) {
- var str=strSPwd;
- var uniql="";
- for (var x=0;x < str.length;x++)
- {
-
- if(uniql.indexOf(str.charAt(x))==-1)
-  {
-  uniql += str[x];  
-  
-   }
-  }
-  return uniql;  
-};
-
-function createSecretPasswordLetterMask(SecretPassword) {
-  /* see example of hardcoded SecretPasswordLetterMask, below. */
-//  SecretPasswordLetterMask = ["M", "I", "S", "P"];
-//  console.log("\nSecretPasswordLetterMask had been created.", SecretPasswordLetterMask);
-
-  //SecretPasswordLetterMask = uniqueSecretLetters(SecretPassword;
-  //console.log("\nNew SecretPasswordLetterMask is:", SecretPasswordLetterMask);
+    console.log("SecretPasswordLetterArray is: ", SecretPasswordLetterArray);
 };
 
 
-
-// var SecretPasswordLetterMask = ["M", "I", "S", "P"];
-
-// function processEndGame(isWinOrLosss) {
-// /* Is this still needed, since both Good and Bad guess processes determine endgame states? */
-// /* Probably not.? */
-// };
 
 function createSecretPasswordLettersArray(SecretPassword) {
    console.log("\nSecretPasswordLetterArray Created");
@@ -355,8 +327,10 @@ function isGuessCorrect(guess) {
   console.log("The value of luckyGuess is: ", luckyGuess);
   if (luckyGuess >=0) {
     this.style.backgroundColor='Green';
+    processGoodGuess(guess);
   } else {
     this.style.backgroundColor='Red';
+    processBadGuess(guess);
   }
   return luckyGuess;
 }
