@@ -211,17 +211,10 @@ initGame();
 function processGuess(guess) {
 };
 
-function guessWrong() {
-  // Turn keytop red.
-  // decrement badGuessesRemaining--
-  // set nextTileVisible(nextTile, true);
-  // NextTile++.
-  // updateScoreboard();
-  // renderGame();  
-  };
+
 /* Process Bad Guess */
 function processBadGuess(guess) {
-
+  audioSoSad.play();
   console.log("\nNumber of Bad Guesses Left is: ", badGuessesLeft);
   showNextMonsterTile(nextMonsterTile);
   document.getElementById('bad-guesses-left').innerHTML = badGuessesLeft.toString();
@@ -237,10 +230,10 @@ function processBadGuess(guess) {
 
 /* Process Good Guess */
 function processGoodGuess(guess) {
-  refreshScoreboard();
+  audioTaDa.play();
 
   if (!SecretPasswordLetterArray) {
-    return process(GameWon());
+    return gameIsWon();
   } else {
     return;
   } 
@@ -295,13 +288,17 @@ function refreshScoreboard() {
 /* all relevant variables should already be changed, so just refresh screen. */
 };
 
+function gameIsWon () {
+  audioCheer.play();
+  document.getElementById('msg-game-banner').innerHTML = "You Won! Play Again? Press 'Start Game'!";
+};
+
 function gameIsLost() {
    // Set msgGameBanner to, "You lost!"
    // After a short pause, set msgGameBanner to "Play Again?"
    gamesLost++;
    document.getElementById('games-lost').innerHTML = gamesLost.toString();
    document.getElementById('msg-game-banner').innerHTML = "You Lost! Play Again? Press 'Start Game'!";
-   
 };
 
 /* Random Secret Password picker: */
@@ -327,7 +324,12 @@ function InitializeDemo() {
 };
 
 function isGuessCorrect(guess) {
-  console.log(this.style.backgroundColor);
+  var currentKeytopColor = this.style.backgroundColor;
+  console.log("\nBackground Color of this keytop is: ", currentKeytopColor);
+  if (currentKeytopColor === 'red' || currentKeytopColor === 'green') {
+    audioCowbell.play();
+    return;
+  };
   guess = this.id;
   console.log("The keytop pressed was:", guess);
   var luckyGuess = SecretPassword.indexOf(guess);
