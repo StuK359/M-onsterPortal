@@ -86,7 +86,33 @@ mtImg7.style.display = "none";
 // a correct guess or an incorrect guess. Something like isGuessCorrect(guess).
 // Temorary test until full renderGame() is completed.
 document.getElementById('A').addEventListener('click', isGuessCorrect);
+document.getElementById('B').addEventListener('click', isGuessCorrect);
+document.getElementById('C').addEventListener('click', isGuessCorrect);
+document.getElementById('D').addEventListener('click', isGuessCorrect);
+document.getElementById('E').addEventListener('click', isGuessCorrect);
+document.getElementById('F').addEventListener('click', isGuessCorrect);
+document.getElementById('G').addEventListener('click', isGuessCorrect);
+document.getElementById('H').addEventListener('click', isGuessCorrect);
+document.getElementById('I').addEventListener('click', isGuessCorrect);
+document.getElementById('J').addEventListener('click', isGuessCorrect);
+document.getElementById('K').addEventListener('click', isGuessCorrect);
+document.getElementById('L').addEventListener('click', isGuessCorrect);
 document.getElementById('M').addEventListener('click', isGuessCorrect);
+document.getElementById('N').addEventListener('click', isGuessCorrect);
+document.getElementById('O').addEventListener('click', isGuessCorrect);
+document.getElementById('P').addEventListener('click', isGuessCorrect);
+document.getElementById('Q').addEventListener('click', isGuessCorrect);
+document.getElementById('R').addEventListener('click', isGuessCorrect);
+document.getElementById('S').addEventListener('click', isGuessCorrect);
+document.getElementById('T').addEventListener('click', isGuessCorrect);
+document.getElementById('U').addEventListener('click', isGuessCorrect);
+document.getElementById('V').addEventListener('click', isGuessCorrect);
+document.getElementById('W').addEventListener('click', isGuessCorrect);
+document.getElementById('X').addEventListener('click', isGuessCorrect);
+document.getElementById('Y').addEventListener('click', isGuessCorrect);
+document.getElementById('Z').addEventListener('click', isGuessCorrect);
+
+
 
 
 // 
