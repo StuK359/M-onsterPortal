@@ -110,6 +110,8 @@ document.getElementById('X').addEventListener('click', isGuessCorrect);
 document.getElementById('Y').addEventListener('click', isGuessCorrect);
 document.getElementById('Z').addEventListener('click', isGuessCorrect);
 
+/* Attach initializeGame() to "Reset Game" button. */
+document.getElementById('reset-game-btn').addEventListener('click', initializeGame);
 /*----- Game Functions -----*/
 gamesWon = 0;
 gamesLost = 0;
