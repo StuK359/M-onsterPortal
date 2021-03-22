@@ -11,18 +11,18 @@ const listSecretPasswords = [
   "BICYCLE",     /* 6 */
   "LUNCH",       /* 7 */
   "PIZZA",       /* 8 */
-  "Orangutan",   /* 9 */
-  "Shovel",      /* 10 */
-  "Canine",      /* 11 */
-  "Table",       /* 12 */
-  "Conflict",    /* 13 */
-  "Parade",      /* 14 */
-  "Wizard",      /* 15 */
-  "Pandemic",    /* 16 */
-  "Theater",     /* 17 */
-  "Desert",      /* 18 */
-  "Forest",      /* 19 */
-  "Surfboard"    /* 20 */
+  "ORANGUTAN",   /* 9 */
+  "SHOVEL",      /* 10 */
+  "CANINE",      /* 11 */
+  "TABLE",       /* 12 */
+  "UMBRELLA",    /* 13 */
+  "PARADE",      /* 14 */
+  "WIZARD",      /* 15 */
+  "PANDEMIC",    /* 16 */
+  "THEATER",     /* 17 */
+  "DESERT",      /* 18 */
+  "FOREST",      /* 19 */
+  "SURFBOARD"    /* 20 */
   ]; 
 
 
@@ -44,7 +44,8 @@ var nextMonsterTile;
 var badGuessesRemaining;  /* id="bad-guesses-remaining" */
 var gamesWon;             /* id="game-wins" */
 var gamesLost;            /* id="game-losses" */
-var guess;                /* Current player letter guess. */
+var guess;                /* Current player's letter guess. */
+var luckyGuess = false    /* Indicates whether their guess is correct or not.
 
 var SecretPassword = "";
 var SecretPasswordLetterMask;
@@ -79,9 +80,15 @@ mtImg7.style.display = "none";
 
 
 /*----- event listeners -----*/
-// document.getElementById('demo-button').addEventListener('click', renderGame;
-// everykeytop object needs an event handler that determines whether a click was 
-// a correct guess or an incorrect guess. Something like evaluateGuess();
+// document.getElementById('demo-button').addEventListener('click', renderGame);
+
+// Every keytop button needs an event handler that determines whether a click was 
+// a correct guess or an incorrect guess. Something like isGuessCorrect(guess).
+// Temorary test until full renderGame() is completed.
+document.getElementById('A').addEventListener('click', isGuessCorrect);
+document.getElementById('M').addEventListener('click', isGuessCorrect);
+
+
 // 
 
 // document.getElementById("incorrect-guesses").innerText = "7";
@@ -253,13 +260,19 @@ function refreshScoreboard() {
 
 /* Random Secret Password picker: */
 function chooseSecretPassword() {
-    var idxSecretPassword = Math.floor(Math.random() * 21) + 1;
-    console.log("\nSecret Password Index is: ", idxSecretPassword); 
-    SecretPassword = listSecretPasswords[idxSecretPassword];
+    // var idxSecretPassword = Math.floor(Math.random() * 20) + 1;
+    // console.log("\nSecret Password Index is: ", idxSecretPassword); 
+    // SecretPassword = listSecretPasswords[idxSecretPassword];
+    
+    // For Testing Purposes Only
+    SecretPassword = "MISSISSIPPI";
     console.log("Secret Password Is: ", SecretPassword);
-    console.log("Unique Secret Letters in Mississippi are", uniqueSecretLetters("Mississippi"));
-    createSecretPasswordLetterMask(SecretPassword);
-    createSecretPasswordLettersArray(SecretPassword);
+    SecretPasswordLetterArray = SecretPassword.split('');
+    
+    SecretPasswordLetterMask = uniqueSecretLetters(SecretPassword);
+    console.log("Unique Secret Letters in ",SecretPassword," are" , SecretPasswordLetterMask);
+    // createSecretPasswordLetterMask(SecretPassword);
+    // createSecretPasswordLettersArray(SecretPassword);
 
 };
 
@@ -284,8 +297,8 @@ function uniqueSecretLetters(strSPwd) {
 
 function createSecretPasswordLetterMask(SecretPassword) {
   /* see example of hardcoded SecretPasswordLetterMask, below. */
-  SecretPasswordLetterMask = ["M", "I", "S", "P"];
-  console.log("\nSecretPasswordLetterMask had been created.", SecretPasswordLetterMask);
+//  SecretPasswordLetterMask = ["M", "I", "S", "P"];
+//  console.log("\nSecretPasswordLetterMask had been created.", SecretPasswordLetterMask);
 
   //SecretPasswordLetterMask = uniqueSecretLetters(SecretPassword;
   //console.log("\nNew SecretPasswordLetterMask is:", SecretPasswordLetterMask);
@@ -293,12 +306,12 @@ function createSecretPasswordLetterMask(SecretPassword) {
 
 
 
-var SecretPasswordLetterMask = ["M", "I", "S", "P"];
+// var SecretPasswordLetterMask = ["M", "I", "S", "P"];
 
-function processEndGame(isWinOrLosss) {
-/* Is this still needed, since both Good and Bad guess processes determine endgame states? */
-/* Probably not.? */
-};
+// function processEndGame(isWinOrLosss) {
+// /* Is this still needed, since both Good and Bad guess processes determine endgame states? */
+// /* Probably not.? */
+// };
 
 function createSecretPasswordLettersArray(SecretPassword) {
    console.log("\nSecretPasswordLetterArray Created");
@@ -307,5 +320,18 @@ function createSecretPasswordLettersArray(SecretPassword) {
 function InitializeDemo() {
 };
 
+function isGuessCorrect(guess) {
+  console.log(this.style.backgroundColor);
+  guess = this.id;
+  console.log("The keytop pressed was:", guess);
+  var luckyGuess = SecretPassword.indexOf(guess);
 
+  console.log("The value of luckyGuess is: ", luckyGuess);
+  if (luckyGuess >=0) {
+    this.style.backgroundColor='Green';
+  } else {
+    this.style.backgroundColor='Red';
+  }
+  return luckyGuess;
+}
 
