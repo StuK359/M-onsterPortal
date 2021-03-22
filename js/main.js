@@ -1,6 +1,5 @@
 /*----- constants -----*/
 const gameTitle = new String("Monster Portal");
-const howToPlayURL = new String("html/howtoplay.html");
 
 const listSecretPasswords = [
   "MISSISSIPPI", /* 1 */
@@ -29,13 +28,12 @@ const listSecretPasswords = [
 /*------ sound declarations -----*/
 const audioCheer = new Audio('sounds/cheer.mp3');
 const audioTaDa = new Audio('sounds/tada.mp3');
-const audioMonsterPortalThemeSong = new Audio('sounds/monsterportal-themesong.mp3');
-audioMonsterPortalThemeSong.volume = .4;
+// const audioMonsterPortalThemeSong = new Audio('sounds/monsterportal-themesong.mp3');
+// audioMonsterPortalThemeSong.volume = .4;
 const audioCowbell = new Audio('sounds/cowbell.mp3');
 const audioQuit = new Audio('sounds/quit.mp3');
 const audioSoSad = new Audio('sounds/toobad.mp3');
-// Still looking for a good monster roar.
-// const audioMonsterRoar = Audio('sounds/mp-roar.mp3') 
+
 
 
 /*----- app's state (variables) -----*/
@@ -112,21 +110,6 @@ document.getElementById('X').addEventListener('click', isGuessCorrect);
 document.getElementById('Y').addEventListener('click', isGuessCorrect);
 document.getElementById('Z').addEventListener('click', isGuessCorrect);
 
-
-
-
-// 
-
-// document.getElementById("incorrect-guesses").innerText = "7";
-// document.getElementById("correct-guesses").innerHTML = toString(correctGuesses);
-// document.getElementById("game-wins").innerHTML = toString(gameWins);
-// document.getElementById("game-losses").innerHTML = toString(gameLosses);
-
-/*----- functions -----*/
-//   setTimeout(() => {initializeGame(); }, 3000);
-//   setTimeout(() => {renderGame(); }, 4000);
-  
-
 /*----- Game Functions -----*/
 gamesWon = 0;
 gamesLost = 0;
@@ -189,28 +172,13 @@ function renderGame() {
   console.log("\nGame Rendered.");
 };
 
-
 /*----- Classes -----*/
-
-
-
+// None used.
 
 /*----- Start of Game -----*/
 initGame();
 
-
-
-// /* ToDo List (look into creating an app for this...): */
-// 3. Use the Math.random % 21 trick to pick a random password and use it as the SecretPassword.
-// 4 Assign each letter of the password to a space in the top row of the 9*2 grid; set the visible property to ‘false’.
-// 5.  For the length of the password, set the glow property of the corresponding slots. 
-// 6. Create the 13*2 keyboard grid, with 26 class=“keytop” buttons. 
-// 7. Set the event handler for the click property on each keytop. 
-
 /* Is guess good or bad? */
-function processGuess(guess) {
-};
-
 
 /* Process Bad Guess */
 function processBadGuess(guess) {
@@ -231,7 +199,11 @@ function processBadGuess(guess) {
 /* Process Good Guess */
 function processGoodGuess(guess) {
   audioTaDa.play();
-
+  for (var i = 0; i < SecretPassword.length; i++) {
+    if (SecretPasswordLetterArray[i] === guess) {
+      document.getElementById('sp-l${i}').innerHTML = guess;
+    }; 
+  }
   if (!SecretPasswordLetterArray) {
     return gameIsWon();
   } else {
@@ -314,18 +286,8 @@ function chooseSecretPassword() {
     console.log("SecretPasswordLetterArray is: ", SecretPasswordLetterArray);
 };
 
-
-
-function createSecretPasswordLettersArray(SecretPassword) {
-   console.log("\nSecretPasswordLetterArray Created");
-};
-
-function InitializeDemo() {
-};
-
 function isGuessCorrect(guess) {
   var currentKeytopColor = this.style.backgroundColor;
-  console.log("\nBackground Color of this keytop is: ", currentKeytopColor);
   if (currentKeytopColor === 'red' || currentKeytopColor === 'green') {
     audioCowbell.play();
     return;
@@ -334,7 +296,6 @@ function isGuessCorrect(guess) {
   console.log("The keytop pressed was:", guess);
   var luckyGuess = SecretPassword.indexOf(guess);
 
-  console.log("The value of luckyGuess is: ", luckyGuess);
   if (luckyGuess >=0) {
     this.style.backgroundColor='Green';
     processGoodGuess(guess);
