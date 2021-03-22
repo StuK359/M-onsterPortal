@@ -12,6 +12,11 @@ html, body {
 h1 {
     color: yellow;
     font-family: 'Neucha', cursive;
+    padding-left: 25%;
+    padding-top: 1em;
+    padding-bottom: 1em;;
+    border-style: solid;
+    border-radius: 5%;
  }
 
  nav {
@@ -58,23 +63,8 @@ menu > div {
 menu > div:last-child {
   margin-left: auto;
 }
-.scoreboard-wrapper {
-  display: grid;
-  grid-template-columns: 5fr 1fr;
-  grid-template-rows: center;
-  width: 250px;
-  justify-items:flex-end;
-  align-items: center;
-  font-family: 'Neucha';
-  font-size: x-large;
-  border-style: solid;
-  border: 8px;
-  border-radius: 5%;
-  background-color: grey;
-  padding: 1px 3px 1px 3px;
-}
 
-.scoreboard-wrapper {
+sb-wrapper {
   display: grid;
   grid-template-columns: 5fr 1fr;
   grid-template-rows: center;
@@ -88,6 +78,10 @@ menu > div:last-child {
   border-radius: 5%;
   background-color: grey;
   padding: 1px 3px 1px 3px;
+  margin: 3%;
+}
+sb-wrapper > div {
+  padding: 5px;
 }
 
  /* This section is to deifne the monster portal grid structure */
@@ -110,59 +104,65 @@ portal > img {
     height: auto;
 }
 
-#monster-tile-1 {
+#mt-img-1 {
     grid-area: tile-1;
     justify-self:flex-start;
     align-items:center ;
 }
-#monster-tile-2 {
+#mt-img-2 {
     grid-area: tile-2;
     justify-self:flex-end;
 }
-#monster-tile-3 {
+#mt-img-3 {
     grid-area: tile-3;
 }
-#monster-tile-4 {
+#mt-img-4 {
     grid-area: tile-4;
     justify-self:flex-end;
 }
-#monster-tile-5 {
+#mt-img-5 {
     grid-area: tile-5;
     justify-self:flex-start;
 }
-#monster-tile-6 {
+#mt-img-6 {
     grid-area: tile-6;
     justify-self:flex-end;
 }
-#monster-tile-7 {
+#mt-img-7 {
     grid-area: tile-7;
     justify-self:flex-start;
 }
  
-.secret-letter {
-    display: flex;
-} 
-.secret-letter-underline {
-    display: flex;
-}
-secret-password {
+sec-pwd {
   display: flex;
   flex-direction: row;  /* default. */
-  /* justify-content: space-around; */
   justify-content: center;
-  align-items: center;
-  font-size: xx-large;
-  height: auto;
+  align-items: flex-start;
+  height: 2em;
   background-color: #0c723e;
+
+}
+.sec-let {
+    /* display: flex; */
+    align-items: center;
+    height: auto ;
+    width: auto;
+} 
+.sec-let-underline {
+    display: flex;
 }
 
-secret-password > div {
-  background-color:darkslategrey;
-  justify-content: center;
-  min-width: 2em;
-  padding-block: 10px;
-  font-size: x-large;
-  font-family: monospace;
+sec-pwd > div {
+  border-style: solid;
+  border-radius: 20%;
+  border-color: gold;
+  justify-items: center;
+  align-items:flex-end ;
+  padding: 1em;
+  font-size: xx-large;
+  width: 2em;
+  height: 2em;
+  text-align: center;
   background-color: rgb(30,113,65);
 }
 
@@ -173,6 +173,13 @@ underlines {
   border-radius: 50%;
   height: 1px;
 }
+
+underlines > div {
+  background-color: greenyellow;
+  border-radius: 50%;
+  height: 1px;
+}
+
 button {
    display: inline-flexbox;
    background-color: grey;
@@ -187,24 +194,29 @@ button {
  }
 
 
+ .keyboard {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+  grid-template-rows: 2;
+  flex-wrap: nowrap;
+  justify-content:space-around;
+  /* justify-items: center; */
+  align-items: center;
+ }
+
  .keyboard > button{
-   display: flex;
-   grid-template-columns: 13;
-   grid-template-rows: 2;
-   justify-items: center;
+   justify-content: space-around;
    align-items: center;
-   padding: 2px;
    border-style: solid;
-   border-radius: 4%;
+   border-radius: 25%;
  }
 
 .keytop {
 /*   display: flex; */
    border-radius: 30%;
    border-color: gold;
-   justify-items: auto;
-   align-items: auto;
-   font-family: DSEG14Modern; 
+   justify-content: space-around;
+   align-items: center;
    font-size: xx-large;
    width: 2em;
    height: 2em;
@@ -235,4 +247,3 @@ button {
   height: 100%;
   background-color: red;
 }
-

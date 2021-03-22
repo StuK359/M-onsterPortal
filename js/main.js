@@ -33,14 +33,13 @@ audioMonsterPortalThemeSong.volume = .4;
 const audioCowbell = new Audio('sounds/cowbell.mp3');
 const audioQuit = new Audio('sounds/quit.mp3');
 const audioSoSad = new Audio('sounds/toobad.mp3');
-const audioMonsterRoar = Audio('sounds/mp-roar.mp3')
+// const audioMonsterRoar = Audio('sounds/mp-roar.mp3')
 
 
 
 /*----- app's state (variables) -----*/
 var playTotallyOriginalThemeSong = false; 
 var nextMonsterTile;
-var howToPlayURL; 
 var badGuessesRemaining;
 var correctGuesses;
 var totalGuesses;
@@ -60,16 +59,29 @@ var tile7 = "imgs/mp7.jpg";
 
 var nextMonsterTile = tile1;
 
+    //Hiding the image using regular JavaScript.
+mtImg1 = document.getElementById('mt-img-1');
+// mtImg1.style.display = "none";
+
+{/* <img id="mt-img-5" src="imgs/mp5.jpg"/>
+<img id="mt-img-7" src="imgs/mp7.jpg"/>
+<img id="mt-img-6" src="imgs/mp6.jpg"/>
+<img id="mt-img-4" src="imgs/mp4.jpg"/>
+<img id="mt-img-3" src="imgs/mp3.jpg"/>
+<img id="mt-img-2" src="imgs/mp2.jpg"/>
+<img id="mt-img-1" src="imgs/mp1.jpg"/> */}
+
+
 /*----- event listeners -----*/
 // document.getElementById('demo-button').addEventListener('click', renderGame;
 // everykeytop object needs an event handler that determines whether a click was 
 // a correct guess or an incorrect guess. Something like evaluateGuess();
 // 
 
-document.getElementById("incorrect-guesses").innerText = "7";
-document.getElementById("correct-guesses").innerHTML = toString(correctGuesses);
-document.getElementById("game-wins").innerHTML = toString(gameWins);
-document.getElementById("game-losses").innerHTML = toString(gameLosses);
+// document.getElementById("incorrect-guesses").innerText = "7";
+// document.getElementById("correct-guesses").innerHTML = toString(correctGuesses);
+// document.getElementById("game-wins").innerHTML = toString(gameWins);
+// document.getElementById("game-losses").innerHTML = toString(gameLosses);
 
 /*----- functions -----*/
 
@@ -87,7 +99,27 @@ function renderGame() {
 /*----- Game Functions -----*/
 
 function initGame() {
+  // mtImg1.style.display = 'none'; /* Doesnt seem to work. */
+/* Doesn't seem to work either. */
+  // document.getElementById('mt-img-1').style.display = 'none';
+  // document.getElementById('mt-img-2').style.display = 'none';
+  // document.getElementById('mt-img-3').style.display = 'none';
+  // document.getElementById('mt-img-4').style.display = 'none';
+  // document.getElementById('mt-img-5').style.display = 'none';
+  // document.getElementById('mt-img-6').style.display = 'none';
+  // document.getElementById('mt-img-7').style.display = 'none';
+    //Hide the image using jQuery's hide() method.
+    // $('#mt-img-1').hide();
+  
+  var firstSL = document.getElementById("sp-l1");
+  console.log(firstSL.innerHTML);
+  // firstSL.style.display="none";
+
+  var firstMonsterTile = document.getElementById("mt-img-1");
+  // firstMonsterTile.style.display="none";
+  
   nextMonsterTile = tile1;
+
   playTotallyOriginalThemeSong = false;
   badGuessesRemaining = 7;
   correctGuessesMade = 0;
@@ -118,7 +150,15 @@ initGame();
 
 
 
-/* ToDo List (look into creating an app for this...): */
+// /* ToDo List (look into creating an app for this...): */
+// 1. That array of strings will hold the 21 passwords. 
+// 2. Add “umbrella” to the list.
+// 3. Use the Math.random % 21 trick to pick a random password and use it as the SecretPassword.
+// 4 Assign each letter of the password to a space in the top row of the 9*2 grid; set the visible property to ‘false’.
+// 5.  For the length of the password, set the glow property of the corresponding slots. 
+// 6. Create the 13*2 keyboard grid, with 26 class=“keytop” buttons. 
+// 7. Set the event handler for the click property on each teytop. 
+
 /* Is guess good or bad? */
 function processGuess(guess) {
 };

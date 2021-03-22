@@ -8,7 +8,6 @@
   <link rel="shortcut icon" type="image/x-icon" href="imgs/favicon.png">
   <link rel="preconnect" href="https://fonts.gstatic.com">
   <link href="https://fonts.googleapis.com/css2?family=Neucha&display=swap" rel="stylesheet">
-  <link href="fonts/DSEG14Modern-Regular.woff2?family=DSEG14Modern-Regular&display-swap" rel="stylesheet">
   <script defer src="js/main.js"></script>
  </head>
  <body>
@@ -19,61 +18,68 @@
       <button class="menu" style="border: solid" id="demo-button">Demo</button>
      </nav>
      <h1>This is where the Game Messages will display.........</h1>
-     <div class="scoreboard-wrapper">
-        <div class="scoreboard" id="incorrect-guesses">Incorrect Guesses:</div><div>0</div>
-        <div class="scoreboard" id="correct-guesses">   Correct Guesses:</div><div>0</div>
-        <div class="scoreboard" id="game-wins">               Game Wins:</div><div>0</div>
-        <div class="scoreboard" id="game-losses">           Game Losses:</div><div>0</div>
-     </div>
+     <sb-wrapper>
+        <div class="sb-item" id="incorrect-guesses">Incorrect Guesses:</div><div>99</div>
+        <div class="sb-item" id="correct-guesses">   Correct Guesses:</div><div>98</div>
+        <div class="sb-item" id="game-wins">               Game Wins:</div><div>97</div>
+        <div class="sb-item" id="game-losses">           Game Losses:</div><div>96</div>
+     </sb-wrapper>
     <portal>
       <br>
-      <img id="monster-tile-5" src="imgs/mp5.jpg"/>
-      <img id="monster-tile-7" src="imgs/mp7.jpg"/>
-      <img id="monster-tile-6" src="imgs/mp6.jpg"/>
-      <img id="monster-tile-4" src="imgs/mp4.jpg"/>
-      <img id="monster-tile-3" src="imgs/mp3.jpg"/>
-      <img id="monster-tile-2" src="imgs/mp2.jpg"/>
-      <img id="monster-tile-1" src="imgs/mp1.jpg"/>
+      <img id="mt-img-5" src="imgs/mp5.jpg"/>
+      <img id="mt-img-7" src="imgs/mp7.jpg"/>
+      <img id="mt-img-6" src="imgs/mp6.jpg"/>
+      <img id="mt-img-4" src="imgs/mp4.jpg"/>
+      <img id="mt-img-3" src="imgs/mp3.jpg"/>
+      <img id="mt-img-2" src="imgs/mp2.jpg"/>
+      <img id="mt-img-1" src="imgs/mp1.jpg"/>
     </portal>
-    <hr>
-    <secret-password>
-      <div></div><div></div><div></div><div></div><div></div><div></div>
-      <div>M</div><div>I</div><div>S</div><div>S</div><div>I</div><div>S</div><div>S</div><div>I</div><div>P</div><div>P</div><div>I</div>
-      <div></div><div></div><div></div><div></div><div></div><div></div>
-    </secret-password>
-    <underlines>
-      <!-- <div></div><div></div><div></div><div></div><div></div><div></div>
-      <div>_</div><div>_</div><div>_</div><div>_</div><div>_</div><div>_</div><div>_</div><div>_</div><div>_</div><div>_</div><div>_</div>
-      <div></div><div></div><div></div><div></div><div></div><div></div> -->
-    </underlines>
     <br>
-    <div class="Keyboard">
+    <hr>
+    <sec-pwd>
+      <div class="sec-let" id="sp-l1">M</div>
+      <div class="sec-let" id="sp-l2">I</div>
+      <div class="sec-let" id="sp-l3">S</div>
+      <div class="sec-let" id="sp-l4">S</div>
+      <div class="sec-let" id="sp-l5">I</div>
+      <div class="sec-let" id="sp-l6">S</div>
+      <div class="sec-let" id="sp-l7">S</div>
+      <div class="sec-let" id="sp-l8">I</div>
+      <div class="sec-let" id="sp-l9">P</div>
+      <div class="sec-let" id="sp-l10">P</div>
+      <div class="sec-let" id="sp-l11">I</div>
+    </sec-pwd>
+    <underlines>
+      <div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div>
+    </underlines>
+    <br><br><br><br>
+    <div class="keyboard">
     <button id="a" class="keytop">A</button>
-    <button id="a" class="keytop">B</button>
-    <button id="a" class="keytop">C</button>
-    <button id="a" class="keytop">D</button>
-    <button id="a" class="keytop">E</button>
-    <button id="a" class="keytop">F</button>
-    <button id="a" class="keytop">G</button>
-    <button id="a" class="keytop">H</button>
-    <button id="a" class="keytop">I</button>
-    <button id="a" class="keytop">J</button>
-    <button id="a" class="keytop">K</button>
-    <button id="a" class="keytop">L</button>
-    <button id="a" class="keytop">M</button><br>
-    <button id="a" class="keytop">N</button>
-    <button id="a" class="keytop">O</button>
-    <button id="a" class="keytop">P</button>
-    <button id="a" class="keytop">Q</button>
-    <button id="a" class="keytop">R</button>
-    <button id="a" class="keytop">S</button>
-    <button id="a" class="keytop">T</button>
-    <button id="a" class="keytop">U</button>
-    <button id="a" class="keytop">V</button>
-    <button id="a" class="keytop">W</button>
-    <button id="a" class="keytop">X</button>
-    <button id="a" class="keytop">Y</button>
-    <button id="a" class="keytop">Z</button>
+    <button id="b" class="keytop">B</button>
+    <button id="c" class="keytop">C</button>
+    <button id="d" class="keytop">D</button>
+    <button id="e" class="keytop">E</button>
+    <button id="f" class="keytop">F</button>
+    <button id="g" class="keytop">G</button>
+    <button id="h" class="keytop">H</button>
+    <button id="i" class="keytop">I</button>
+    <button id="j" class="keytop">J</button>
+    <button id="k" class="keytop">K</button>
+    <button id="l" class="keytop">L</button>
+    <button id="m" class="keytop">M</button>
+    <button id="n" class="keytop">N</button>
+    <button id="o" class="keytop">O</button>
+    <button id="p" class="keytop">P</button>
+    <button id="q" class="keytop">Q</button>
+    <button id="r" class="keytop">R</button>
+    <button id="s" class="keytop">S</button>
+    <button id="t" class="keytop">T</button>
+    <button id="u" class="keytop">U</button>
+    <button id="v" class="keytop">V</button>
+    <button id="w" class="keytop">W</button>
+    <button id="x" class="keytop">X</button>
+    <button id="y" class="keytop">Y</button>
+    <button id="z" class="keytop">Z</button>
     <br><br><br><br><br><br>
   </div>
 </body>
