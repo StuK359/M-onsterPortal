@@ -3,27 +3,28 @@ const gameTitle = new String("Monster Portal");
 const howToPlayURL = new String("html/howtoplay.html");
 
 const listSecretPasswords = [
-  "MISSISSIPPI",
-  "MARSUPIAL",
-  "MOUNTAIN",
-  "MONKEY",
-  "SPATULA",
-  "BICYCLE",
-  "LUNCH",
-  "PIZZA",
-  "Orangutan",
-  "Shovel",
-  "Canine",
-  "Table",
-  "Conflict",
-  "Parade",
-  "Wizard",
-  "Pandemic",
-  "Theater",
-  "Desert",
-  "Forest",
-  "Surfboard"
+  "MISSISSIPPI", /* 1 */
+  "MARSUPIAL",   /* 2 */
+  "MOUNTAIN",    /* 3 */
+  "MONKEY",      /* 4 */
+  "SPATULA",     /* 5 */
+  "BICYCLE",     /* 6 */
+  "LUNCH",       /* 7 */
+  "PIZZA",       /* 8 */
+  "Orangutan",   /* 9 */
+  "Shovel",      /* 10 */
+  "Canine",      /* 11 */
+  "Table",       /* 12 */
+  "Conflict",    /* 13 */
+  "Parade",      /* 14 */
+  "Wizard",      /* 15 */
+  "Pandemic",    /* 16 */
+  "Theater",     /* 17 */
+  "Desert",      /* 18 */
+  "Forest",      /* 19 */
+  "Surfboard"    /* 20 */
   ]; 
+
 
 /*------ sound declarations -----*/
 const audioCheer = new Audio('sounds/cheer.mp3');
@@ -42,8 +43,11 @@ const audioSoSad = new Audio('sounds/toobad.mp3');
 var nextMonsterTile;
 var badGuessesRemaining;  /* id="bad-guesses-remaining" */
 var gamesWon;             /* id="game-wins" */
-var gamesLost;           /* id="game-losses" */
-var guess;      
+var gamesLost;            /* id="game-losses" */
+var guess;                /* Current player letter guess. */
+
+var SecretPassword = "";
+var SecretPasswordLetterMask;
 
 
 /*----- cached element references -----*/
@@ -126,7 +130,9 @@ document.getElementById("bad-guesses-left").innerHTML = badGuessesLeft;
 document.getElementById("games-won").innerHTML = gamesWon;
 document.getElementById("games-lost").innerHTML = gamesLost;
 
+/* Choose Secret Password */
 
+chooseSecretPassword();
 
 // Hiding the Secret Password letters:
   document.getElementById("sp-l1").innerHTML = "*";
@@ -167,13 +173,11 @@ initGame();
 
 
 // /* ToDo List (look into creating an app for this...): */
-// 1. That array of strings will hold the 21 passwords. 
-// 2. Add “umbrella” to the list.
 // 3. Use the Math.random % 21 trick to pick a random password and use it as the SecretPassword.
 // 4 Assign each letter of the password to a space in the top row of the 9*2 grid; set the visible property to ‘false’.
 // 5.  For the length of the password, set the glow property of the corresponding slots. 
 // 6. Create the 13*2 keyboard grid, with 26 class=“keytop” buttons. 
-// 7. Set the event handler for the click property on each teytop. 
+// 7. Set the event handler for the click property on each keytop. 
 
 /* Is guess good or bad? */
 function processGuess(guess) {
@@ -249,16 +253,45 @@ function refreshScoreboard() {
 
 /* Random Secret Password picker: */
 function chooseSecretPassword() {
-    createSecretSPasswordMask(SecretPassword);
+    var idxSecretPassword = Math.floor(Math.random() * 21) + 1;
+    console.log("\nSecret Password Index is: ", idxSecretPassword); 
+    SecretPassword = listSecretPasswords[idxSecretPassword];
+    console.log("Secret Password Is: ", SecretPassword);
+    console.log("Unique Secret Letters in Mississippi are", uniqueSecretLetters("Mississippi"));
+    createSecretPasswordLetterMask(SecretPassword);
+    createSecretPasswordLettersArray(SecretPassword);
 
 };
 
 /* Dynamically create SecretLetterPasswordMask array for each unique letter in the Secret Password. */
 /* This facilitates rapid assessment of Good Guesses. */
 /* MISSISSIPPI example hard-coded for testing & demo: */
+
+function uniqueSecretLetters(strSPwd) {
+ var str=strSPwd;
+ var uniql="";
+ for (var x=0;x < str.length;x++)
+ {
+
+ if(uniql.indexOf(str.charAt(x))==-1)
+  {
+  uniql += str[x];  
+  
+   }
+  }
+  return uniql;  
+};
+
 function createSecretPasswordLetterMask(SecretPassword) {
   /* see example of hardcoded SecretPasswordLetterMask, below. */
+  SecretPasswordLetterMask = ["M", "I", "S", "P"];
+  console.log("\nSecretPasswordLetterMask had been created.", SecretPasswordLetterMask);
+
+  //SecretPasswordLetterMask = uniqueSecretLetters(SecretPassword;
+  //console.log("\nNew SecretPasswordLetterMask is:", SecretPasswordLetterMask);
 };
+
+
 
 var SecretPasswordLetterMask = ["M", "I", "S", "P"];
 
@@ -267,8 +300,11 @@ function processEndGame(isWinOrLosss) {
 /* Probably not.? */
 };
 
-function InitializeDemo() {
+function createSecretPasswordLettersArray(SecretPassword) {
+   console.log("\nSecretPasswordLetterArray Created");
+};
 
+function InitializeDemo() {
 };
 
 
