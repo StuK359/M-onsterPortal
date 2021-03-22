@@ -33,19 +33,17 @@ audioMonsterPortalThemeSong.volume = .4;
 const audioCowbell = new Audio('sounds/cowbell.mp3');
 const audioQuit = new Audio('sounds/quit.mp3');
 const audioSoSad = new Audio('sounds/toobad.mp3');
-// const audioMonsterRoar = Audio('sounds/mp-roar.mp3')
-
+// Still looking for a good monster roar.
+// const audioMonsterRoar = Audio('sounds/mp-roar.mp3') 
 
 
 /*----- app's state (variables) -----*/
-var playTotallyOriginalThemeSong = false; 
+// var playTotallyOriginalThemeSong = false; /* Enable this if time permits */
 var nextMonsterTile;
-var badGuessesRemaining;
-var correctGuesses;
-var totalGuesses;
-var gameWins;
-var gameLosses;
-var guess;
+var badGuessesRemaining;  /* id="bad-guesses-remaining" */
+var gamesWon;             /* id="game-wins" */
+var gamesLost;           /* id="game-losses" */
+var guess;      
 
 
 /*----- cached element references -----*/
@@ -59,17 +57,21 @@ var tile7 = "imgs/mp7.jpg";
 
 var nextMonsterTile = tile1;
 
-    //Hiding the image using regular JavaScript.
+//Hiding the image using regular JavaScript.
 mtImg1 = document.getElementById('mt-img-1');
-// mtImg1.style.display = "none";
-
-{/* <img id="mt-img-5" src="imgs/mp5.jpg"/>
-<img id="mt-img-7" src="imgs/mp7.jpg"/>
-<img id="mt-img-6" src="imgs/mp6.jpg"/>
-<img id="mt-img-4" src="imgs/mp4.jpg"/>
-<img id="mt-img-3" src="imgs/mp3.jpg"/>
-<img id="mt-img-2" src="imgs/mp2.jpg"/>
-<img id="mt-img-1" src="imgs/mp1.jpg"/> */}
+mtImg1.style.display = "none";
+mtImg2 = document.getElementById('mt-img-2');
+mtImg2.style.display = "none";
+mtImg3 = document.getElementById('mt-img-3');
+mtImg3.style.display = "none";
+mtImg4 = document.getElementById('mt-img-4');
+mtImg4.style.display = "none";
+mtImg5 = document.getElementById('mt-img-5');
+mtImg5.style.display = "none";
+mtImg6 = document.getElementById('mt-img-6');
+mtImg6.style.display = "none";
+mtImg7 = document.getElementById('mt-img-7');
+mtImg7.style.display = "none";
 
 
 /*----- event listeners -----*/
@@ -84,14 +86,6 @@ mtImg1 = document.getElementById('mt-img-1');
 // document.getElementById("game-losses").innerHTML = toString(gameLosses);
 
 /*----- functions -----*/
-
-
-
-
-function renderGame() {
-
-}
-
 //   setTimeout(() => {initializeGame(); }, 3000);
 //   setTimeout(() => {renderGame(); }, 4000);
   
@@ -99,17 +93,6 @@ function renderGame() {
 /*----- Game Functions -----*/
 
 function initGame() {
-  // mtImg1.style.display = 'none'; /* Doesnt seem to work. */
-/* Doesn't seem to work either. */
-  // document.getElementById('mt-img-1').style.display = 'none';
-  // document.getElementById('mt-img-2').style.display = 'none';
-  // document.getElementById('mt-img-3').style.display = 'none';
-  // document.getElementById('mt-img-4').style.display = 'none';
-  // document.getElementById('mt-img-5').style.display = 'none';
-  // document.getElementById('mt-img-6').style.display = 'none';
-  // document.getElementById('mt-img-7').style.display = 'none';
-    //Hide the image using jQuery's hide() method.
-    // $('#mt-img-1').hide();
   
   var firstSL = document.getElementById("sp-l1");
   console.log(firstSL.innerHTML);
@@ -119,14 +102,47 @@ function initGame() {
   // firstMonsterTile.style.display="none";
   
   nextMonsterTile = tile1;
+/* Hide monster: */
+  mtImg1 = document.getElementById('mt-img-1');
+  mtImg1.style.display = "none";
+  mtImg2 = document.getElementById('mt-img-2');
+  mtImg2.style.display = "none";
+  mtImg3 = document.getElementById('mt-img-3');
+  mtImg3.style.display = "none";
+  mtImg4 = document.getElementById('mt-img-4');
+  mtImg4.style.display = "none";
+  mtImg5 = document.getElementById('mt-img-5');
+  mtImg5.style.display = "none";
+  mtImg6 = document.getElementById('mt-img-6');
+  mtImg6.style.display = "none";
+  mtImg7 = document.getElementById('mt-img-7');
+  mtImg7.style.display = "none";
 
-  playTotallyOriginalThemeSong = false;
-  badGuessesRemaining = 7;
-  correctGuessesMade = 0;
-  totalGuessesMade = 0;
-  gameWins = 0;
-  gameLosses = 0;
+/* Initialize Scoreboard: */
+badGuessesLeft = 7;
+gamesWon = 0;
+gamesLost = 0;
+document.getElementById("bad-guesses-left").innerHTML = badGuessesLeft;
+document.getElementById("games-won").innerHTML = gamesWon;
+document.getElementById("games-lost").innerHTML = gamesLost;
+
+
+
+// Hiding the Secret Password letters:
+  document.getElementById("sp-l1").innerHTML = "*";
+  document.getElementById("sp-l2").innerHTML = "*";
+  document.getElementById("sp-l3").innerHTML = "*";
+  document.getElementById("sp-l4").innerHTML = "*";
+  document.getElementById("sp-l5").innerHTML = "*";
+  document.getElementById("sp-l6").innerHTML = "*";
+  document.getElementById("sp-l7").innerHTML = "*";
+  document.getElementById("sp-l8").innerHTML = "*";
+  document.getElementById("sp-l9").innerHTML = "*";
+  document.getElementById("sp-l10").innerHTML = "*";
+  document.getElementById("sp-l11").innerHTML = "*";
+
   guess = "";
+
   renderGame();
 }
 
@@ -204,7 +220,7 @@ function showNextMonsterTile() {
 };
 
 function showCurrentMonsterTile(nextMonsterTile) {
-  showTile(nextMonsterTile);
+  // showTile(nextMonsterTile);
 };
 
 function showMonsterTile(nextMonsterTile) {
@@ -230,22 +246,13 @@ function refreshScoreboard() {
 /* all relevant variables should already be changed, so just refresh screen. */
 };
 
-function guessedWrong() {
-    // Turn keytop red.
-  // decrement badGuessesRemaining--
-  // set nextTileVisible(nextTile, true);
-  // NextTile++.
-  // updateScoreboard();
-  // renderGame(); 
-  };
-  
-  
-
 
 /* Random Secret Password picker: */
 function chooseSecretPassword() {
+    createSecretSPasswordMask(SecretPassword);
 
 };
+
 /* Dynamically create SecretLetterPasswordMask array for each unique letter in the Secret Password. */
 /* This facilitates rapid assessment of Good Guesses. */
 /* MISSISSIPPI example hard-coded for testing & demo: */
@@ -260,15 +267,9 @@ function processEndGame(isWinOrLosss) {
 /* Probably not.? */
 };
 
+function InitializeDemo() {
 
-
-class keyboardObjectArray {
 };
 
-class currentSecretPassword {
-};
-
-class demoScript {
-};
 
 

@@ -13,10 +13,11 @@ h1 {
     color: yellow;
     font-family: 'Neucha', cursive;
     padding-left: 25%;
-    padding-top: 1em;
-    padding-bottom: 1em;;
+    padding-top: 15px;
+    padding-bottom: 15px;
     border-style: solid;
-    border-radius: 5%;
+    border-radius: 15px;
+    margin: 8px 10% 5px 10px;
  }
 
  nav {
@@ -27,57 +28,34 @@ h1 {
   align-items: center;
   height: 50px;
   background-color: #a2cbb6;
+  border-radius: 15px;
 }
 
 nav > button {
   font-size: 30px;
   margin: 0 15px;
   color: yellow;
+  border-radius: 15px;
 }
 
 nav > button:last-child {
   margin-left: auto;
 }
 
- menu {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  font-family: 'Neucha';
-  width: 250px;
-  align-items: center;
-  height: 50px;
-  background-color: #a2cbb6;
-  justify-content: space-around;
-  font-size: xx-large;
-  color: yellow;
-  background-color: rgb(128,128,128);
-}
-
-menu > div {
-  grid-template-rows: auto;
-  margin: 0 15px;
-  background-color: rgb(128,128,128);
-}
-
-menu > div:last-child {
-  margin-left: auto;
-}
-
 sb-wrapper {
   display: grid;
-  grid-template-columns: 5fr 1fr;
+  grid-template-columns: 275px 60px;
   grid-template-rows: center;
-  width: 250px;
+  width: 350px;
   justify-items:flex-end;
   align-items: center;
   font-family: 'Neucha';
-  font-size: x-large;
-  border-style: solid;
-  border: 8px;
+  font-size: xx-large;
+  /* border-style: solid;
+  border: 8px; */
   border-radius: 5%;
   background-color: grey;
-  padding: 1px 3px 1px 3px;
+  padding: 1px 3px 1px 0;
   margin: 3%;
 }
 sb-wrapper > div {
@@ -91,17 +69,41 @@ portal {
     justify-content:center;
     align-items: auto;
     background-color: rgba(200,250,280,0);
-    grid-template-columns: 6;
+    grid-template-columns: 7;
     grid-template-rows: 6;
     grid-template-areas:
-    "tile-5 tile-5 tile-7 tile-7 tile-6 tile-6"
-    "tile-4 tile-4 tile-4 tile-3 tile-3 tile-3"
-    "tile-2 tile-2 tile-2 tile-1 tile-1 tile-1"
+    "blank-1 tile-5 tile-5 tile-7 tile-7 tile-6 tile-6"
+    "blank-2 tile-4 tile-4 tile-4 tile-3 tile-3 tile-3"
+    "blank-3 tile-2 tile-2 tile-2 tile-1 tile-1 tile-1"
 }
 
 portal > img {
     width: auto;
     height: auto;
+}
+
+#mt-blank-1 {
+  grid-area: blank-1;
+  justify-self: flex-start;
+  align-items: center;
+  height: 10px;
+  background-color: rgb(7, 17, 17);
+}
+
+#mt-blank-2 {
+  grid-area: blank-2;
+  justify-self: flex-start;
+  align-items: center;
+  height: 160px;
+  background-color: rgb(7, 17, 17);
+}
+
+#mt-blank-3 {
+  grid-area: blank-3;
+  justify-self: flex-start;
+  align-items: center;
+  height: 160px;
+  background-color: rgb(7, 17, 17);
 }
 
 #mt-img-1 {
@@ -138,7 +140,6 @@ sec-pwd {
   flex-direction: row;  /* default. */
   justify-content: center;
   align-items: flex-start;
-  height: 2em;
   background-color: #0c723e;
 
 }
@@ -202,6 +203,7 @@ button {
   justify-content:space-around;
   /* justify-items: center; */
   align-items: center;
+  margin: 0 350px;
  }
 
  .keyboard > button{
@@ -209,13 +211,14 @@ button {
    align-items: center;
    border-style: solid;
    border-radius: 25%;
+   margin: 20x 0 2px 0; 
  }
 
 .keytop {
 /*   display: flex; */
    border-radius: 30%;
    border-color: gold;
-   justify-content: space-around;
+   justify-content: center;
    align-items: center;
    font-size: xx-large;
    width: 2em;
