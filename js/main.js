@@ -221,11 +221,10 @@ function guessWrong() {
   };
 /* Process Bad Guess */
 function processBadGuess(guess) {
-  badGuessesLeft--;
-  document.getElementById('bad-guesses-left').innerHTML = badGuessesLeft.toString();
+
   console.log("\nNumber of Bad Guesses Left is: ", badGuessesLeft);
   showNextMonsterTile(nextMonsterTile);
-
+  document.getElementById('bad-guesses-left').innerHTML = badGuessesLeft.toString();
   refreshScoreboard();
 
   if (badGuessesLeft) {
@@ -252,35 +251,43 @@ function showNextMonsterTile(nextMonsterTile) {
 };
 
 function showMonsterTile(nextMonsterTile) {
-   if(nextMonsterTile = tile1) {
+   switch(badGuessesLeft) {
     // setTile1Visible
-    mtImg1.style.display = "list-item";
-    nextMonsterTile = tile2;
-   } else if(nextMonsterTile= tile2) {
-    // setTileVisible
-    mtImg2.style.display = "list-item";
-    nextMonsterTile = tile3;
-  } else if(nextMonsterTile= tile3) {
-    // setTileVisible
-    mtImg3.style.display = "list-item";
-    nextMonsterTile = tile4;
-  } else if(nextMonsterTile= tile4) {    
-    // setTileVisible
-    mtImg4.style.display = "list-item";
-    nextMonsterTile = tile5;
-  } else if(nextMonsterTile= tile5) {
-    // setTileVisible
-    mtImg5.style.display = "list-item";
-    nextMonsterTile = tile6;
-  } else if(nextMonsterTile= tile6) {
-    // setTileVisible
-    mtImg6.style.display = "list-item";
-    nextMonsterTile = tile7;
-  } else if(nextMonsterTile= tile7) {
-       // setTileVisible
-    mtImg7.style.display = "list-item";
-    nextMonsterTile = tile1;   
-  }
+    case 7:
+      mtImg1.style.display = "list-item";
+      badGuessesLeft = 6;
+    break;
+    
+    case 6:
+      mtImg2.style.display = "list-item";
+      badGuessesLeft = 5;
+      break;
+    
+    case 5:
+      mtImg3.style.display = "list-item";
+      badGuessesLeft = 4;
+      break;
+
+    case 4:
+      mtImg4.style.display = "list-item";
+      badGuessesLeft = 3;
+      break;
+
+    case 3:
+      mtImg5.style.display = "list-item";
+      badGuessesLeft = 2;
+      break;
+
+    case 2:
+      mtImg6.style.display = "list-item";
+      badGuessesLeft = 1;
+      break;
+    
+    case 1:
+      mtImg7.style.display = "list-item";
+      badGuessesLeft = 0;
+      break;
+   }
 };
 
 function refreshScoreboard() {
@@ -292,6 +299,7 @@ function gameIsLost() {
    // Set msgGameBanner to, "You lost!"
    // After a short pause, set msgGameBanner to "Play Again?"
    gamesLost++;
+   document.getElementById('games-lost').innerHTML = gamesLost.toString();
    document.getElementById('msg-game-banner').innerHTML = "You Lost! Play Again? Press 'Start Game'!";
    
 };
