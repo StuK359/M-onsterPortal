@@ -164,13 +164,8 @@ chooseSecretPassword();
   document.getElementById("sp-l11").innerHTML = "*";
 
   guess = "";
-
-  renderGame();
 }
 
-function renderGame() {
-  console.log("\nGame Rendered.");
-};
 
 /*----- Classes -----*/
 // None used.
@@ -183,10 +178,8 @@ initGame();
 /* Process Bad Guess */
 function processBadGuess(guess) {
   audioSoSad.play();
-  console.log("\nNumber of Bad Guesses Left is: ", badGuessesLeft);
   showNextMonsterTile(nextMonsterTile);
   document.getElementById('bad-guesses-left').innerHTML = badGuessesLeft.toString();
-  refreshScoreboard();
 
   if (badGuessesLeft) {
     return; 
@@ -255,10 +248,6 @@ function showMonsterTile(nextMonsterTile) {
    }
 };
 
-function refreshScoreboard() {
-  console.log("\nScoreboard Refreshed.")
-/* all relevant variables should already be changed, so just refresh screen. */
-};
 
 function gameIsWon () {
   audioCheer.play();
@@ -276,14 +265,12 @@ function gameIsLost() {
 /* Random Secret Password picker: */
 function chooseSecretPassword() {
    var idxSecretPassword = Math.floor(Math.random() * 20) + 1;
-   console.log("\nSecret Password Index is: ", idxSecretPassword); 
+
    SecretPassword = listSecretPasswords[idxSecretPassword];
     
     // For Testing Purposes Only
     SecretPassword = "MISSISSIPPI";
-    console.log("Secret Password Is: ", SecretPassword);
     SecretPasswordLetterArray = SecretPassword.split('');
-    console.log("SecretPasswordLetterArray is: ", SecretPasswordLetterArray);
 };
 
 function isGuessCorrect(guess) {
@@ -293,7 +280,6 @@ function isGuessCorrect(guess) {
     return;
   };
   guess = this.id;
-  console.log("The keytop pressed was:", guess);
   var luckyGuess = SecretPassword.indexOf(guess);
 
   if (luckyGuess >=0) {
