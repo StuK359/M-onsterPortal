@@ -152,7 +152,7 @@ chooseSecretPassword();
 
 /* Set Password Length in scoreboard */
 spwdLength = SecretPassword.length;
-document.getElementById("spwd-length").innerHTML = spwdLength.toString;
+// document.getElementById("spwd-length").innerHTML = spwdLength.toString;
 
 
 // Hiding the Secret Password letters:
