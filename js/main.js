@@ -150,7 +150,13 @@ document.getElementById("games-lost").innerHTML = gamesLost;
 
 chooseSecretPassword();
 
+/* Set Password Length in scoreboard */
+spwdLength = SecretPassword.length;
+document.getElementById("spwd-length").innerHTML = spwdLength.toString;
+
+
 // Hiding the Secret Password letters:
+  document.getElementById("sp-l0").innerHTML = "*";
   document.getElementById("sp-l1").innerHTML = "*";
   document.getElementById("sp-l2").innerHTML = "*";
   document.getElementById("sp-l3").innerHTML = "*";
@@ -161,7 +167,6 @@ chooseSecretPassword();
   document.getElementById("sp-l8").innerHTML = "*";
   document.getElementById("sp-l9").innerHTML = "*";
   document.getElementById("sp-l10").innerHTML = "*";
-  document.getElementById("sp-l11").innerHTML = "*";
 
   guess = "";
 }
@@ -192,9 +197,10 @@ function processBadGuess(guess) {
 /* Process Good Guess */
 function processGoodGuess(guess) {
   audioTaDa.play();
+  // debugger
   for (var i = 0; i < SecretPassword.length; i++) {
     if (SecretPasswordLetterArray[i] === guess) {
-      document.getElementById('sp-l${i}').innerHTML = guess;
+      document.getElementById(`sp-l${i}`).innerHTML = guess;
     }; 
   }
   if (!SecretPasswordLetterArray) {
