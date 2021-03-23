@@ -45,9 +45,8 @@ var gamesWon;             /* id="game-wins" */
 var gamesLost;            /* id="game-losses" */
 var guess;                /* Current player's letter guess. */
 var luckyGuess = false;    /* Indicates whether their guess is correct or not. */
-
-var GameOver = false;     /* Used to disable keyboard after game is won or lost.
-
+var GameOver = false;     /* Used to disable keyboard after game is won or lost. */
+var secretLettersRemaining;
 var SecretPassword = "";
 var SecretPasswordLetterMask;
 
@@ -147,12 +146,16 @@ document.getElementById("games-won").innerHTML = gamesWon;
 document.getElementById("games-lost").innerHTML = gamesLost;
 
 /* Choose Secret Password */
+
 chooseSecretPassword();
+
 /* Show the password length in scoreboard */
 spwdLength = SecretPassword.length;
 document.getElementById('spwd-length').innerHTML = spwdLength;
 
-// Mask the Secret Password letters:
+// Clear the Secret Password field, then mask out the Secret Password letters:
+clearSecretPasswordFields();
+
 for (var i=0; i < spwdLength;i++ ) {
   document.getElementById(`sp-l${i}`).style.borderColor = "yellow";
   document.getElementById(`sp-l${i}`).innerHTML = "*";
@@ -192,19 +195,14 @@ function processGoodGuess(guess) {
   for (var i = 0; i < SecretPassword.length; i++) {
     if (SecretPasswordLetterArray[i] === guess) {
       document.getElementById(`sp-l${i}`).innerHTML = guess;
-  // ToDo: Remove visible letter from LetterArray using this technique: 
-  //   let s = "crt/r2002_2";
-  // let o = s.slice(0, 4) + s.slice(5);
-  // let delAtIdx = (s, i) => s.slice(0, i) + s.slice(i + 1); // this function remove letter at index i
-  // console.log(o);
-  // console.log(delAtIdx(s, 4));
-
-    }; 
+      secretLettersRemaining = secretLettersRemaining-1;
+      console.log("secretLettersRemaining: ", secretLettersRemaining);      
+     }; 
   }
   document.getElementById('msg-game-banner').innerHTML = "EXCELLENT!!! One letter closer to saving the world!";
   // ToDo: Remove letter from secret password letter array
-console.log(SecretPasswordLetterArray);
-  if (!SecretPasswordLetterArray) {
+// console.log(SecretPasswordLetterArray);
+  if (!secretLettersRemaining) {
     return gameIsWon();
   } else {
     return;
@@ -278,22 +276,27 @@ function chooseSecretPassword() {
    var idxSecretPassword = Math.floor(Math.random() * 20) + 1;
 
    SecretPassword = listSecretPasswords[idxSecretPassword];
+   secretLettersRemaining = SecretPassword.length;
    SecretPasswordLetterArray = SecretPassword.split('');
    
 };
 
 function isGuessCorrect(guess) {
   var currentKeytopColor = this.style.backgroundColor;
-  if (gameOver === true) return;
-  if (currentKeytopColor === 'red' || currentKeytopColor === 'green') {
+  if (gameOver === true) return; // Ignore keyboard clicks and bail immediately if the game is over.
+
+  // If the letter has already been chosen:
+  if (currentKeytopColor === 'red' || currentKeytopColor === 'green') { 
+    document.getElementById('msg-game-banner').innerHTML = "Oops! That letter has already been chosen. Try a different one.";
     audioCowbell.play();
     return;
   };
- 
-
-  guess = this.id;
-  var luckyGuess = SecretPassword.indexOf(guess);
-
+  
+  // Snag the keytop that player clicked for further processing 
+  guess = this.id; 
+  
+  // luckyGuess will be >= zero if it's a good guess.
+  var luckyGuess = SecretPassword.indexOf(guess); 
   if (luckyGuess >=0) {
     this.style.backgroundColor='Green';
     processGoodGuess(guess);
@@ -302,6 +305,13 @@ function isGuessCorrect(guess) {
     processBadGuess(guess);
   }
   return luckyGuess;
+};
+
+function clearSecretPasswordFields() {
+  for (var i=0; i < 11; i++ ) {
+    document.getElementById(`sp-l${i}`).style.borderColor = "rgb(30,113,65)";
+    document.getElementById(`sp-l${i}`).innerHTML = " ";
+  };
 };
 
 function resetKeytops() {
