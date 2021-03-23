@@ -2,11 +2,11 @@
 const gameTitle = new String("Monster Portal");
 
 const listSecretPasswords = [
+  "SPATULA",     /* 5 */
   "MISSISSIPPI", /* 1 */
   "MARSUPIAL",   /* 2 */
   "MOUNTAIN",    /* 3 */
   "MONKEY",      /* 4 */
-  "SPATULA",     /* 5 */
   "BICYCLE",     /* 6 */
   "LUNCH",       /* 7 */
   "PIZZA",       /* 8 */
@@ -21,7 +21,8 @@ const listSecretPasswords = [
   "THEATER",     /* 17 */
   "DESERT",      /* 18 */
   "FOREST",      /* 19 */
-  "SURFBOARD"    /* 20 */
+  "SURFBOARD",    /* 20 */
+  "CEREBELLUM"   /* 21 */
   ]; 
 
 
@@ -43,7 +44,9 @@ var badGuessesLeft;  /* id="bad-guesses-left" */
 var gamesWon;             /* id="game-wins" */
 var gamesLost;            /* id="game-losses" */
 var guess;                /* Current player's letter guess. */
-var luckyGuess = false    /* Indicates whether their guess is correct or not.
+var luckyGuess = false;    /* Indicates whether their guess is correct or not. */
+
+var GameOver = false;     /* Used to disable keyboard after game is won or lost.
 
 var SecretPassword = "";
 var SecretPasswordLetterMask;
@@ -111,21 +114,16 @@ document.getElementById('Y').addEventListener('click', isGuessCorrect);
 document.getElementById('Z').addEventListener('click', isGuessCorrect);
 
 /* Attach initializeGame() to "Reset Game" button. */
-document.getElementById('reset-game-btn').addEventListener('click', initializeGame);
+document.getElementById('reset-game-btn').addEventListener('click', initGame);
+document.getElementById('start-game-btn').addEventListener('click', initGame);
+
 /*----- Game Functions -----*/
 gamesWon = 0;
 gamesLost = 0;
 
 function initGame() {
-  
-  var firstSL = document.getElementById("sp-l1");
-  console.log(firstSL.innerHTML);
-  // firstSL.style.display="none";
+  gameOver = false;
 
-  var firstMonsterTile = document.getElementById("mt-img-1");
-  // firstMonsterTile.style.display="none";
-  
-  nextMonsterTile = tile1;
 /* Hide monster: */
   mtImg1 = document.getElementById('mt-img-1');
   mtImg1.style.display = "none";
@@ -149,28 +147,19 @@ document.getElementById("games-won").innerHTML = gamesWon;
 document.getElementById("games-lost").innerHTML = gamesLost;
 
 /* Choose Secret Password */
-
 chooseSecretPassword();
-
-/* Set Password Length in scoreboard */
+/* Show the password length in scoreboard */
 spwdLength = SecretPassword.length;
-// document.getElementById("spwd-length").innerHTML = spwdLength.toString;
+document.getElementById('spwd-length').innerHTML = spwdLength;
 
-
-// Hiding the Secret Password letters:
-  document.getElementById("sp-l0").innerHTML = "*";
-  document.getElementById("sp-l1").innerHTML = "*";
-  document.getElementById("sp-l2").innerHTML = "*";
-  document.getElementById("sp-l3").innerHTML = "*";
-  document.getElementById("sp-l4").innerHTML = "*";
-  document.getElementById("sp-l5").innerHTML = "*";
-  document.getElementById("sp-l6").innerHTML = "*";
-  document.getElementById("sp-l7").innerHTML = "*";
-  document.getElementById("sp-l8").innerHTML = "*";
-  document.getElementById("sp-l9").innerHTML = "*";
-  document.getElementById("sp-l10").innerHTML = "*";
-
+// Mask the Secret Password letters:
+for (var i=0; i < spwdLength;i++ ) {
+  document.getElementById(`sp-l${i}`).style.borderColor = "yellow";
+  document.getElementById(`sp-l${i}`).innerHTML = "*";
+};
   guess = "";
+
+  resetKeytops();
 }
 
 
@@ -187,7 +176,7 @@ function processBadGuess(guess) {
   audioSoSad.play();
   showNextMonsterTile(nextMonsterTile);
   document.getElementById('bad-guesses-left').innerHTML = badGuessesLeft.toString();
-
+  document.getElementById('msg-game-banner').innerHTML = "WRONG!!! The monster is getting closer!!!";
   if (badGuessesLeft) {
     return; 
   } else {
@@ -203,8 +192,18 @@ function processGoodGuess(guess) {
   for (var i = 0; i < SecretPassword.length; i++) {
     if (SecretPasswordLetterArray[i] === guess) {
       document.getElementById(`sp-l${i}`).innerHTML = guess;
+  // ToDo: Remove visible letter from LetterArray using this technique: 
+  //   let s = "crt/r2002_2";
+  // let o = s.slice(0, 4) + s.slice(5);
+  // let delAtIdx = (s, i) => s.slice(0, i) + s.slice(i + 1); // this function remove letter at index i
+  // console.log(o);
+  // console.log(delAtIdx(s, 4));
+
     }; 
   }
+  document.getElementById('msg-game-banner').innerHTML = "EXCELLENT!!! One letter closer to saving the world!";
+  // ToDo: Remove letter from secret password letter array
+console.log(SecretPasswordLetterArray);
   if (!SecretPasswordLetterArray) {
     return gameIsWon();
   } else {
@@ -259,6 +258,9 @@ function showMonsterTile(nextMonsterTile) {
 
 function gameIsWon () {
   audioCheer.play();
+  gamesWon++;
+  gameOver = true;
+  document.getElementById('games-won').innerHTML = gamesWon.toString();
   document.getElementById('msg-game-banner').innerHTML = "You Won! Play Again? Press 'Start Game'!";
 };
 
@@ -266,6 +268,7 @@ function gameIsLost() {
    // Set msgGameBanner to, "You lost!"
    // After a short pause, set msgGameBanner to "Play Again?"
    gamesLost++;
+   gameOver = true;
    document.getElementById('games-lost').innerHTML = gamesLost.toString();
    document.getElementById('msg-game-banner').innerHTML = "You Lost! Play Again? Press 'Start Game'!";
 };
@@ -275,18 +278,19 @@ function chooseSecretPassword() {
    var idxSecretPassword = Math.floor(Math.random() * 20) + 1;
 
    SecretPassword = listSecretPasswords[idxSecretPassword];
-    
-    // For Testing Purposes Only
-    SecretPassword = "MISSISSIPPI";
-    SecretPasswordLetterArray = SecretPassword.split('');
+   SecretPasswordLetterArray = SecretPassword.split('');
+   
 };
 
 function isGuessCorrect(guess) {
   var currentKeytopColor = this.style.backgroundColor;
+  if (gameOver === true) return;
   if (currentKeytopColor === 'red' || currentKeytopColor === 'green') {
     audioCowbell.play();
     return;
   };
+ 
+
   guess = this.id;
   var luckyGuess = SecretPassword.indexOf(guess);
 
@@ -298,5 +302,34 @@ function isGuessCorrect(guess) {
     processBadGuess(guess);
   }
   return luckyGuess;
-}
+};
 
+function resetKeytops() {
+  // forEach Keytop, set backgroundColor back to neutral grey.
+  document.getElementById('A').style.backgroundColor = "grey";
+  document.getElementById('B').style.backgroundColor = "grey";
+  document.getElementById('C').style.backgroundColor = "grey";
+  document.getElementById('D').style.backgroundColor = "grey";
+  document.getElementById('E').style.backgroundColor = "grey";
+  document.getElementById('F').style.backgroundColor = "grey";
+  document.getElementById('G').style.backgroundColor = "grey";
+  document.getElementById('H').style.backgroundColor = "grey";
+  document.getElementById('I').style.backgroundColor = "grey";
+  document.getElementById('J').style.backgroundColor = "grey";
+  document.getElementById('K').style.backgroundColor = "grey";
+  document.getElementById('L').style.backgroundColor = "grey";
+  document.getElementById('M').style.backgroundColor = "grey";
+  document.getElementById('N').style.backgroundColor = "grey";
+  document.getElementById('O').style.backgroundColor = "grey";
+  document.getElementById('P').style.backgroundColor = "grey";
+  document.getElementById('Q').style.backgroundColor = "grey";
+  document.getElementById('R').style.backgroundColor = "grey";
+  document.getElementById('S').style.backgroundColor = "grey";
+  document.getElementById('T').style.backgroundColor = "grey";
+  document.getElementById('U').style.backgroundColor = "grey";
+  document.getElementById('V').style.backgroundColor = "grey";
+  document.getElementById('W').style.backgroundColor = "grey";
+  document.getElementById('X').style.backgroundColor = "grey";
+  document.getElementById('Y').style.backgroundColor = "grey";
+  document.getElementById('Z').style.backgroundColor = "grey";  
+};

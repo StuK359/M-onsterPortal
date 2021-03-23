@@ -12,7 +12,7 @@ html, body {
 h1 {
     color: yellow;
     font-family: 'Neucha', cursive;
-    padding-left: 25%;
+    padding-left: 10%;
     padding-top: 15px;
     padding-bottom: 15px;
     border-style: solid;
@@ -62,7 +62,7 @@ sb-wrapper > div {
   padding: 5px;
 }
 
- /* This section is to deifne the monster portal grid structure */
+ /* This section is to define the monster portal grid structure */
 portal {
     display: grid;
     flex-wrap: nowrap;
@@ -148,6 +148,7 @@ sec-pwd {
     align-items: center;
     height: auto ;
     width: auto;
+    border-color: rgb(40,112,68); 
 } 
 .sec-let-underline {
     display: flex;
@@ -160,7 +161,7 @@ sec-pwd > div {
   justify-items: center;
   align-items:flex-end ;
   padding: 1em;
-  font-size: xx-large;
+  font-size: x-large;
   width: 2em;
   height: 2em;
   text-align: center;
@@ -185,7 +186,7 @@ button {
    display: inline-flexbox;
    background-color: grey;
    color: darkblue;
-   border: 2px solid white;
+   border: 3px solid rgb(241, 245, 242);
    border-radius: 3;
 }
   
@@ -211,13 +212,14 @@ button {
    align-items: center;
    border-style: solid;
    border-radius: 25%;
-   margin: 20x 0 2px 0; 
- }
+   margin: 20x 0 2px 0;
+}
 
 .keytop {
 /*   display: flex; */
    border-radius: 30%;
-   border-color: gold;
+   border-color:yellowgreen;
+   border-width: 5px;
    justify-content: center;
    align-items: center;
    font-size: xx-large;
@@ -225,28 +227,5 @@ button {
    height: 2em;
    text-align: center;
 }
-/* .hover-message-1 {
-  display: none;
-} */
 
-.hidden {
-  display: inline-block;
-  color :  rgb(7, 17, 17);
-  border-color:  rgb(7, 17, 17);
-  background-color:  rgb(7, 17, 17);
-}
 
-#demo-button:hover + #demo-button + #demo-button-hidden-msg {
-    display: inline-block;
-    text-align: center;
-    font-size: large;
-    color: white;
-    border-color: white;
-}
-
-#demo-button > hover-message-1{
-  display: inline-block;
-  width: 50%;
-  height: 100%;
-  background-color: red;
-}
